@@ -28,10 +28,10 @@ class TestComponent extends React.Component {
     render() {
         return (
             <div>
-                <div onClick={that.props.controller.action("clickHandler")}>
+                <div onClick={this.props.controller.action("clickHandler")}>
                     {this.props.props.title}
                 </div>
-                <div onClick={that.props.controller.action("clickHandler")}>
+                <div onClick={this.props.controller.action("clickHandler")}>
                     {this.props.state.data}
                 </div>
             </div>
