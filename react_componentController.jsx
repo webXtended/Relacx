@@ -1,3 +1,11 @@
+/*!
+ * React_ComponentController v1.0
+ *
+ * Copyright 2017, Himanshu Tanwar
+ * Released under the MIT license
+ * https://github.com/webXtended/react_componentController
+ * Date: 2017-06-07
+ */
 var ComponentController = (function () {
     var controllers = {};
     class BaseComponent extends React.Component{
