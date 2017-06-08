@@ -6,7 +6,11 @@
  * https://github.com/webXtended/react_componentController
  * Date: 2017-06-07
  */
-var ComponentController = (function () {
+(function (name, context, definition) {
+    if (typeof module != 'undefined') {module.exports = definition()}
+    else if (typeof define == 'function') {define(definition)}
+    else {context[name] =  definition()}
+})('ComponentController', this, function () {
     var controllers = {};
     class BaseComponent extends React.Component{
         constructor(){
@@ -37,8 +41,8 @@ var ComponentController = (function () {
         var data = obj;
         var prop;
         for(var i=1;i<key.length-1;i++){
-                prop = key[i];
-                data=data[prop];
+            prop = key[i];
+            data=data[prop];
         }
         data[key.pop()] = item;
         return obj;
@@ -99,7 +103,7 @@ var ComponentController = (function () {
                                             props={props}
                                             properties={properties || {}}
                                             state={state}>
-                            </BaseComponent>
+        </BaseComponent>
 
         if(container){
             ReactDOM.render(baseComponent,container);
@@ -118,7 +122,7 @@ var ComponentController = (function () {
                                             props={props}
                                             properties={properties || {}}
                                             state={state}>
-                             </BaseComponent>
+        </BaseComponent>
 
         return baseComponent;
     }
@@ -133,5 +137,5 @@ var ComponentController = (function () {
         component: component,
         create: create
     }
-})();
+});
 
