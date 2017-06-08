@@ -1,12 +1,4 @@
-/*!
- * React_ComponentController v1.0
- *
- * Copyright 2017, Himanshu Tanwar
- * Released under the MIT license
- * https://github.com/webXtended/react_componentController
- * Date: 2017-06-07
- */
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -16,7 +8,23 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ComponentController = function () {
+/*!
+ * React_ComponentController v1.0
+ *
+ * Copyright 2017, Himanshu Tanwar
+ * Released under the MIT license
+ * https://github.com/webXtended/react_componentController
+ * Date: 2017-06-07
+ */
+(function (name, context, definition) {
+    if (typeof module != 'undefined') {
+        module.exports = definition();
+    } else if (typeof define == 'function') {
+        define(definition);
+    } else {
+        context[name] = definition();
+    }
+})('ComponentController', undefined, function () {
     var controllers = {};
 
     var BaseComponent = function (_React$Component) {
@@ -29,7 +37,7 @@ var ComponentController = function () {
         }
 
         _createClass(BaseComponent, [{
-            key: "componentWillMount",
+            key: 'componentWillMount',
             value: function componentWillMount() {
                 this.props.init.prototype = this.props.properties;
                 var controller = new this.props.init(this);
@@ -40,7 +48,7 @@ var ComponentController = function () {
                 }
             }
         }, {
-            key: "render",
+            key: 'render',
             value: function render() {
                 var Element = this.props.comp;
                 return React.createElement(Element, { state: this.state,
@@ -153,4 +161,4 @@ var ComponentController = function () {
         component: component,
         create: create
     };
-}();
+});
