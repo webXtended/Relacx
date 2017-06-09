@@ -24,7 +24,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     } else {
         context[name] = definition();
     }
-})('ComponentController', undefined, function () {
+})('ComponentController', this, function () {
     var controllers = {};
 
     var BaseComponent = function (_React$Component) {
