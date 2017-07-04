@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+.gameWrapper{
+    width: 60px;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    display: inline-block;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    vertical-align: top;
+    font-family: sans-serif;
+    line-height: 20px;
+}
+
+.square:nth-child(3n) {
+    border-right: none;
+}
+
+.square:nth-child(n+7) {
+    border-bottom: none;
+}
+
+.gameStatus {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.winner {
+    margin-top: 10px;
+    text-decoration: blink;
+    display: inline;
+}
+
+span.playAgainBtn {
+    cursor: pointer;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+playAgainBtn:hover {
+    font-weight: bold;
+}
