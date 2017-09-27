@@ -1,134 +1,168 @@
-# react_componentController
-A micro library for separately managing react components and their state
+# Relacx
+A micro library for separately managing react components and their state.
 
-## How to use component controller
+#### Installation
 
+    //Add installation steps here
 
-ComponentController contains three methods
-1. create
-2. render
-3. component
+#####
+#### Usage
 
-__Create__ links a component with a controller
-eg: ComponentController.create(COMPONENT, CONTROLLER);
-Here COMPONENT is a react component and 
-CONTROLLER is an object containing controll functions.
+The following methods are available in the library :
 
-__render__ render's a react component in a provided container along with the initial state and props.
-eg: ComponentController.render(COMPONENT, DOM_CONTAINER, PROPS, STATE, CALLBACK);
-Here COMPONENT is a react component,
-DOM_CONTAINER is any DOM element inside whihc the component will render,
-PROPS is an object of props to be passed to COMPONENT,
-STATE is the initial state object for the COMPONENT,
-CALLBACK will take a function and return the instance of controller created for the COMPONENT
+1. render
+2. component
+3. controller
+4. broadcastAction
 
-__component__ returns a react component to be placed within JSX for renderring.
-eg: ComponentController.component(COMPONENT, PROPS, STATE, PARENT, CHILD);
-Here COMPONENT is a react component,
-PROPS is an object of props to be passed to COMPONENT,
-STATE is the initial state object for the COMPONENT,
-PARENT(optional) is the refrence of parent of COMPONENT 
-CHILD(optional) is the id of child inside PARENT'S state
+##### Usage of render function
 
-By giving PARENT AND CHILD, the state is managed by the PARENT and by skipping PARENT and CHILD, the state is independent of parent component.
+    Relacx.render(COMPONENT, ELEMENT, OPTIONS);
 
-```javascript
-class TestComponent extends React.Component {
-    constructor(){
-        super();
-    }
-    render() {
-        return (
-            <div>
-                <div onClick={this.props.controller.action("clickHandler")}>
-                    {this.props.props.title}
-                </div>
-                <div onClick={this.props.controller.action("clickHandler")}>
-                    {this.props.state.data}
-                </div>
-            </div>
-        );
-    }
-};
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| COMPONENT | React Component | Any React element to be rendered. This will typically be your root element. |
+| ELEMENT | DOM node | The DOM node into which COMPONENT needs to be rendered. |
+| OPTIONS | JavaScript Object | 2 options can be passed into the parameter to initialize the component.|
 
-var TestController = {
-    clickHandler: function(e){
-        this.setState({
-            data: "data changed"
-        });
-    }
-};
+The following options are available to pass into the component to be rendered.
+* props - JavaScript Object
+* state - JavaScript Object
+
+>props
+
+These are same as react props. Pass in a JavaScript object and use it in the component as
+
+    this.props.PROPERTY_NAME
+where PROPERTY_NAME is the any key in the passed props object.
+
+#####
+> state
+
+The initial state of the component to be rendered. Provide a JavaScript object into this option, this object will
+be available in the component as
+
+    this.props.state.PROPERTY_NAME
+where PROPERTY_NAME is the any key in the passed state object.
+
+The state value can be changed using the setState method of the component's controller.
+
+#####
+
+##### Usage of component function
+
+    Relacx.component(COMPONENT, ELEMENT, OPTIONS);
 
 
-ComponentController.create(TestComponent, TestController);
-ComponentController.render(TestComponent,document.getElementById("container"),{title:"this is the title"},{data:"this is the data"});
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| COMPONENT | React Component | Any React element to be rendered. This will typically be your root element. |
+| ELEMENT | DOM node | The DOM node into which COMPONENT needs to be rendered. |
+| OPTIONS | JavaScript Object | 4 options can be passed into the parameter to initialize the component.|
 
-```
-
-For using a component inside a parent
-```javascript
-class Outer extends React.Component {
-    render() {
-        var that = this;
-        var list = this.props.state.list.map(function (item, index) {
-            var key = that.props.state.list[index].key || index;
-            key = index + new Date().getMilliseconds();
-            that.props.state.list[index].key = key;
-            return (
-                ComponentController.component(Inner, {key:key}, item, that, "list."+index)
-            );
-        });
-        return (
-            <div>
-                {list}
-            </div>
-        )
-    }
-}
-
-class Inner extends React.Component {
-    render() {
-        return (
-            <div onClick={this.props.controller.action("innerClick")}>
-                {this.props.state.name}
-            </div>
-        )
-    }
-}
-
-var data = [
-    {
-        name: "a"
-    },
-    {
-        name: "b"
-    },
-    {
-        name: "c"
-    }
-];
+The following options are available to pass into the component to be rendered.
+* props - JavaScript Object
+* state - JavaScript Object
+* parent - Reference to parent Component
+* childPath - JavaScript String
 
 
-var OuterController = {
-    render: function (list) {
-        this.setState({list: list});
-    }
-};
+#####
+> props and state
 
-var InnerController = {
-    innerClick: function () {
-        this.setState({
-            name: "c1"
-        });
-    }
-};
+They work the same way as described in the render function above.
 
-ComponentController.create(Outer, OuterController);
-ComponentController.create(Inner, InnerController);
+#####
+> parent
 
-ComponentController.render(Outer, document.getElementById("container"),
-    {}, {list: data}, function(controller){
-        window.outerController1 = controller
-    });
-```
+If the state of the component needs to be maintained by its parent component, then a reference of the parent
+component needs to be passed along with the childPath.
+
+By passing parent and childPath; setState method of the component will update the state of the parent.
+
+By skipping the parent and childPath options, the component is independent of the parent's state.
+
+#####
+> childPath
+
+This is the path of the data source for the component's state option.
+
+i.e. the path from the parent's state to the component's state.
+
+The path values are separated by a .(DOT)
+
+#####
+
+##### Usage of controller function
+
+The controller method is used to create a controller for a React component.
+
+    var CONTROLLER_NAME = Relacx.controller(COMPONENT);
+
+The method accepts a React component for whihc the controller needs to be created.
+
+In the syntax above,
+
+CONTROLLER_NAME is any name you want to give to your controller.
+
+COMPONENT the React component for which the controller needs to be made.
+
+
+A controller can have two type of properties:
+
+ * Action
+ * ActionListener
+
+> Action
+
+Actions happening in a component can be controlled by the Action property.
+Components will require event handlers like click, keyPress, submit etc. to be used,
+for this purpose actions can be added to the controller.
+
+    CONTROLLER_NAME.addAction("ACTION_NAME", FUNCTION);
+
+Use the addAction method of the controller to add an action. The method takes 2 arguments,
+* ACTION_NAME : any string to recognize the action.
+* FUNCTION: a JavaScript function to be called when the action takes place
+
+The actions are available in the component in props.controller property,
+
+    <COMPONENT onClick={this.props.controller.action("ACTION_NAME", ARGUMENTS)}>
+        SUBMIT
+    </COMPONENT>
+
+
+"this.props.controller.action" method is used to access an action in the controller,
+
+The first parameter in the action method is the name of the action to be used.
+
+Any number of comma separated arguments can be passed after the action name which will be available in the
+function passed while creating the action.
+
+#####
+> ActionListener
+
+An ActionListener is used to respond to other actions. Whenever an action is triggered, the action needs to broadcast it
+using the broadcast action method.
+
+    ContentController.addActionListener([ACTION_NAMES], FUNCTION);
+
+The addActionListener method is used to listen to actions. The method takes in two parameters:
+* ACTION_NAMES: list of action name string
+* FUNCTION :  a JavaScript function to be called when an action is broadcast.
+
+read **_Usage of broadcastAction function_** for more details.
+
+
+
+#####
+##### Usage of broadcastAction function
+
+The broadcastAction method is used to inform other actions of a triggered event.
+
+    Relacx.broadcastAction("ACTION_NAME", DATA);
+
+Whenever an action takes place and you want to inform other actions of an event, then use the
+broadcastAction method to do so. Action listeners listening for the ACTION_NAME event will get triggered
+and the triggered function will receive 2 parameters, the ACTION_NAME and DATA from the broadcaster.
 
