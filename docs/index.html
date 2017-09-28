@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Relacx JS</title>
-
     <link type="text/css" rel="stylesheet" href="./github-markdown.css"/>
 
     <style>
@@ -19,276 +18,212 @@
 </head>
 <body>
 
-<article class="markdown-body">
-    <h1>Relacx</h1>
-    <p>
-    <p>A micro library for separately managing React components and their state.</p>
-
-    <h4 id="installation">Installation</h4>
-
+<article class="markdown-body entry-content" itemprop="text"><h1><a href="#relacx" aria-hidden="true" class="anchor" id="user-content-relacx"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relacx</h1>
+    <p>A micro library for separately managing react components and their state.</p>
+    <h4><a href="#installation" aria-hidden="true" class="anchor" id="user-content-installation"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation</h4>
     <blockquote>
         <p>By Script Tag</p>
     </blockquote>
-
     <p>Since Relacx is a state manager for React; it requires React.js and React-Dom.js
-        The current version of Relacx uses React version 15.5.4 </p>
-
+        The current version of Relacx uses React version 15.5.4</p>
     <pre><code>&lt;script type="text/javascript" src="react.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="react-dom.js"&gt;&lt;/script&gt;
 </code></pre>
-
     <p>Since ES6 is being used, babel is used to provide polyfill the new features of ES6.
         The helpers.js is used for the same. It is available in the dist directory.</p>
-
     <pre><code>&lt;script type="text/javascript" src="helpers.js"&gt;&lt;/script&gt;
 </code></pre>
-
     <p>Now, to use Relacx the Relacx.js file is needed, available in dist directory</p>
-
     <pre><code>&lt;script type="text/javascript" src="relacx.js"&gt;&lt;/script&gt;
 </code></pre>
-
     <p>After this you can add your project's script files.</p>
-
-    <h4 id="">#</h4>
-
-    <h4 id="usage">Usage</h4>
-
+    <h5></h5>
+    <h4><a href="#usage" aria-hidden="true" class="anchor" id="user-content-usage"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h4>
     <p>The following methods are available in the library :</p>
-
     <ol>
         <li>render</li>
-
         <li>component</li>
-
         <li>controller</li>
-
         <li>broadcastAction</li>
     </ol>
-
-    <h5 id="usageofrenderfunction">Usage of render function</h5>
-
+    <h5><a href="#usage-of-render-function" aria-hidden="true" class="anchor" id="user-content-usage-of-render-function"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage of render function</h5>
     <pre><code>Relacx.render(COMPONENT, ELEMENT, OPTIONS);
 </code></pre>
-
-    <p>| Parameter | Type | Description |
-        | ------ | ------ | ------ |
-        | COMPONENT | React Component | Any React element to be rendered. This will typically be your root element. |
-        | ELEMENT | DOM node | The DOM node into which COMPONENT needs to be rendered. |
-        | OPTIONS | JavaScript Object | 2 options can be passed into the parameter to initialize the component.|</p>
-
+    <table>
+        <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>COMPONENT</td>
+            <td>React Component</td>
+            <td>Any React element to be rendered. This will typically be your root element.</td>
+        </tr>
+        <tr>
+            <td>ELEMENT</td>
+            <td>DOM node</td>
+            <td>The DOM node into which COMPONENT needs to be rendered.</td>
+        </tr>
+        <tr>
+            <td>OPTIONS</td>
+            <td>JavaScript Object</td>
+            <td>2 options can be passed into the parameter to initialize the component.</td>
+        </tr></tbody></table>
     <p>The following options are available to pass into the component to be rendered.</p>
-
     <ul>
         <li>props - JavaScript Object</li>
-
         <li>state - JavaScript Object</li>
     </ul>
-
     <blockquote>
         <p>props</p>
     </blockquote>
-
     <p>These are same as react props. Pass in a JavaScript object and use it in the component as</p>
-
     <pre><code>this.props.PROPERTY_NAME
 </code></pre>
-
     <p>where PROPERTY_NAME is the any key in the passed props object.</p>
-
-    <h4 id="-1">#</h4>
-
+    <h5></h5>
     <blockquote>
         <p>state</p>
     </blockquote>
-
     <p>The initial state of the component to be rendered. Provide a JavaScript object into this option, this object will
         be available in the component as</p>
-
     <pre><code>this.props.state.PROPERTY_NAME
 </code></pre>
-
     <p>where PROPERTY_NAME is the any key in the passed state object.</p>
-
     <p>The state value can be changed using the setState method of the component's controller.</p>
-
-    <h4 id="-2">#</h4>
-
-    <h5 id="usageofcomponentfunction">Usage of component function</h5>
-
+    <h5></h5>
+    <h5><a href="#usage-of-component-function" aria-hidden="true" class="anchor" id="user-content-usage-of-component-function"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage of component function</h5>
     <pre><code>Relacx.component(COMPONENT, ELEMENT, OPTIONS);
 </code></pre>
-
-    <p>| Parameter | Type | Description |
-        | ------ | ------ | ------ |
-        | COMPONENT | React Component | Any React element to be rendered. This will typically be your root element. |
-        | ELEMENT | DOM node | The DOM node into which COMPONENT needs to be rendered. |
-        | OPTIONS | JavaScript Object | 4 options can be passed into the parameter to initialize the component.|</p>
-
+    <table>
+        <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>COMPONENT</td>
+            <td>React Component</td>
+            <td>Any React element to be rendered. This will typically be your root element.</td>
+        </tr>
+        <tr>
+            <td>ELEMENT</td>
+            <td>DOM node</td>
+            <td>The DOM node into which COMPONENT needs to be rendered.</td>
+        </tr>
+        <tr>
+            <td>OPTIONS</td>
+            <td>JavaScript Object</td>
+            <td>4 options can be passed into the parameter to initialize the component.</td>
+        </tr></tbody></table>
     <p>The following options are available to pass into the component to be rendered.</p>
-
     <ul>
         <li>props - JavaScript Object</li>
-
         <li>state - JavaScript Object</li>
-
         <li>parent - Reference to parent Component</li>
-
         <li>childPath - JavaScript String</li>
     </ul>
-
-    <h4 id="-3">#</h4>
-
+    <h5></h5>
     <blockquote>
         <p>props and state</p>
     </blockquote>
-
     <p>They work the same way as described in the render function above.</p>
-
-    <h4 id="-4">#</h4>
-
+    <h5></h5>
     <blockquote>
         <p>parent</p>
     </blockquote>
-
     <p>If the state of the component needs to be maintained by its parent component, then a reference of the parent
         component needs to be passed along with the childPath.</p>
-
     <p>By passing parent and childPath; setState method of the component will update the state of the parent.</p>
-
     <p>By skipping the parent and childPath options, the component is independent of the parent's state.</p>
-
-    <h4 id="-5">#</h4>
-
+    <h5></h5>
     <blockquote>
         <p>childPath</p>
     </blockquote>
-
     <p>This is the path of the data source for the component's state option.</p>
-
     <p>i.e. the path from the parent's state to the component's state.</p>
-
     <p>The path values are separated by a .(DOT)</p>
-
-    <h4 id="-6">#</h4>
-
-    <h5 id="usageofcontrollerfunction">Usage of controller function</h5>
-
+    <h5></h5>
+    <h5><a href="#usage-of-controller-function" aria-hidden="true" class="anchor" id="user-content-usage-of-controller-function"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage of controller function</h5>
     <p>The controller method is used to create a controller for a React component.</p>
-
     <pre><code>var CONTROLLER_NAME = Relacx.controller(COMPONENT);
 </code></pre>
-
     <p>The method accepts a React component for whihc the controller needs to be created.</p>
-
     <p>In the syntax above,</p>
-
     <p>CONTROLLER_NAME is any name you want to give to your controller.</p>
-
     <p>COMPONENT the React component for which the controller needs to be made.</p>
-
     <p>A controller can have three type of properties:</p>
-
     <ul>
         <li>Action</li>
-
         <li>BroadcastAction</li>
-
         <li>ActionListener</li>
     </ul>
-
     <blockquote>
         <p>Action</p>
     </blockquote>
-
     <p>Actions happening in a component can be controlled by the Action property.
         Components will require event handlers like click, keyPress, submit etc. to be used,
         for this purpose actions can be added to the controller.</p>
-
     <pre><code>CONTROLLER_NAME.addAction("ACTION_NAME", FUNCTION);
 </code></pre>
-
     <p>Use the addAction method of the controller to add an action. The method takes 2 arguments,</p>
-
     <ul>
         <li>ACTION_NAME : any string to recognize the action.</li>
-
         <li>FUNCTION: a JavaScript function to be called when the action takes place</li>
     </ul>
-
     <p>The actions are available in the component in props.controller property,</p>
-
     <pre><code>&lt;COMPONENT onClick={this.props.controller.action("ACTION_NAME", ARGUMENTS)}&gt;
     SUBMIT
 &lt;/COMPONENT&gt;
 </code></pre>
-
     <p>"this.props.controller.action" method is used to access an action in the controller,</p>
-
     <p>The first parameter in the action method is the name of the action to be used.</p>
-
     <p>Any number of comma separated arguments can be passed after the action name which will be available in the
         function passed while creating the action.</p>
-
-    <h4 id="-7">#</h4>
-
+    <h5></h5>
     <blockquote>
         <p>BroadcastAction</p>
     </blockquote>
-
-    <p>BroadcastActions are the same as Actions with an additional functionality of broadcasting the result of the
-        action to
+    <p>BroadcastActions are the same as Actions with an additional functionality of broadcasting the result of the action to
         ActionListeners.</p>
-
     <pre><code>CONTROLLER_NAME.addBroadcastAction("ACTION_NAME", FUNCTION);
 </code></pre>
-
-    <p>They are used the same way as Actions are used. The return value of the BroadcastAction will be provided to
-        ActionListeners
+    <p>They are used the same way as Actions are used. The return value of the BroadcastAction will be provided to ActionListeners
         listening to the "ACTION _NAME".</p>
-
-    <h4 id="-8">#</h4>
-
+    <h5></h5>
     <blockquote>
         <p>ActionListener</p>
     </blockquote>
-
-    <p>An ActionListener is used to respond to other actions. Whenever an action is triggered, the action needs to
-        broadcast it
+    <p>An ActionListener is used to respond to other actions. Whenever an action is triggered, the action needs to broadcast it
         using the broadcast action method.</p>
-
     <pre><code>ContentController.addActionListener([ACTION_NAMES], FUNCTION);
 </code></pre>
-
     <p>The addActionListener method is used to listen to actions. The method takes in two parameters:</p>
-
     <ul>
         <li>ACTION_NAMES: list of action name string</li>
-
-        <li>FUNCTION : a JavaScript function to be called when an action is broadcast.</li>
+        <li>FUNCTION :  a JavaScript function to be called when an action is broadcast.</li>
     </ul>
-
     <p>read <strong><em>Usage of broadcastAction function</em></strong> for more details.</p>
-
-    <h4 id="-9">#</h4>
-
-    <h5 id="usageofbroadcastactionfunction">Usage of broadcastAction function</h5>
-
+    <h5></h5>
+    <h5><a href="#usage-of-broadcastaction-function" aria-hidden="true" class="anchor" id="user-content-usage-of-broadcastaction-function"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage of broadcastAction function</h5>
     <p>The broadcastAction method is used to inform other actions of a triggered event.
-        This is an alternative to using BroadcastAction in the Controller. It can be used anywhere in your
-        application.</p>
-
+        This is an alternative to using BroadcastAction in the Controller. It can be used anywhere in your application.</p>
     <pre><code>Relacx.broadcastAction("ACTION_NAME", DATA);
 </code></pre>
-
     <p>Whenever an action takes place and you want to inform other actions of an event, then use the
-        broadcastAction method to do so. Action listeners listening for the ACTION<em>NAME event will get triggered
-            and the triggered function will receive 2 parameters, the ACTION</em>NAME and DATA from the broadcaster.</p>
-
-    </p>
+        broadcastAction method to do so. Action listeners listening for the ACTION_NAME event will get triggered
+        and the triggered function will receive 2 parameters, the ACTION_NAME and DATA from the broadcaster.</p>
 </article>
 
 
+<br>
 <script async src="//jsfiddle.net/s31ofus0/embed/js,html,css,result/dark/"></script>
 
 </body>
