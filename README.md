@@ -108,9 +108,10 @@ CONTROLLER_NAME is any name you want to give to your controller.
 COMPONENT the React component for which the controller needs to be made.
 
 
-A controller can have two type of properties:
+A controller can have three type of properties:
 
  * Action
+ * BroadcastAction
  * ActionListener
 
 > Action
@@ -140,6 +141,18 @@ Any number of comma separated arguments can be passed after the action name whic
 function passed while creating the action.
 
 #####
+> BroadcastAction
+
+BroadcastActions are the same as Actions with an additional functionality of broadcasting the result of the action to 
+ActionListeners.
+
+    CONTROLLER_NAME.addBroadcastAction("ACTION_NAME", FUNCTION);
+
+They are used the same way as Actions are used. The return value of the BroadcastAction will be provided to ActionListeners 
+listening to the "ACTION _NAME".
+
+
+#####
 > ActionListener
 
 An ActionListener is used to respond to other actions. Whenever an action is triggered, the action needs to broadcast it
@@ -159,10 +172,10 @@ read **_Usage of broadcastAction function_** for more details.
 ##### Usage of broadcastAction function
 
 The broadcastAction method is used to inform other actions of a triggered event.
+This is an alternative to using BroadcastAction in the Controller. It can be used anywhere in your application.
 
     Relacx.broadcastAction("ACTION_NAME", DATA);
 
 Whenever an action takes place and you want to inform other actions of an event, then use the
 broadcastAction method to do so. Action listeners listening for the ACTION_NAME event will get triggered
 and the triggered function will receive 2 parameters, the ACTION_NAME and DATA from the broadcaster.
-
