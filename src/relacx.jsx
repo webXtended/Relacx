@@ -17,7 +17,7 @@
         constructor(props){
             super(props);
 
-            var properties = {}
+            var properties = {};
 
             for(var key in this.props.props){
                 properties[key] = this.props.props[key];
@@ -98,7 +98,7 @@
             };
             this.getState = function(){
                 return component.state;
-            }
+            };
 
             this.getChildInstances = function(){
                 return childComponents;
@@ -133,6 +133,10 @@
                 var keyList = parent.props.controller.childKeys;
                 parent.props.controller.setState(obj, [keyList, (prevKey||key)].join("."));
             };
+
+            this.getState = function(){
+                return component.state;
+            }
         }
 
         return Controller;
@@ -196,14 +200,21 @@
 
     Controller.prototype.setComponentController = function(controller){
         this.componentController = controller;
-    }
+    };
 
     Controller.prototype.addAction = function(actionName, action){
         this[actionName] = action;
     };
 
     Controller.prototype.addActionListener = function(events, action){
-        if(events){
+        if(events && typeof events === 'string'){
+            actionListeners[events] = actionListeners[events] || [];
+            actionListeners[events].push({
+                componentName: this.componentName,
+                action: action
+            });
+        }
+        else if(events && events.length){
             for(var i=0; i<events.length; i++){
                 actionListeners[events[i]] = actionListeners[events[i]] || [];
                 actionListeners[events[i]].push({
@@ -212,7 +223,15 @@
                 });
             }
         }
-    }
+    };
+
+    Controller.prototype.addBroadcastAction = function(actionName, action){
+        this[actionName] = function(){
+            var args = Array.prototype.slice.call(arguments);
+            var result = action.apply(this,args);
+            broadcastAction(actionName, result)
+        };
+    };
 
     function broadcastAction(actionName, data){
         var listeners = actionListeners[actionName];
