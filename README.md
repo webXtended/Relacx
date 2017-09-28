@@ -3,7 +3,25 @@ A micro library for separately managing react components and their state.
 
 #### Installation
 
-    //Add installation steps here
+
+> By Script Tag
+
+Since Relacx is a state manager for React; it requires React.js and React-Dom.js
+The current version of Relacx uses React version 15.5.4 
+
+    <script type="text/javascript" src="react.js"></script>
+    <script type="text/javascript" src="react-dom.js"></script>
+
+Since ES6 is being used, babel is used to provide polyfill the new features of ES6.
+The helpers.js is used for the same. It is available in the dist directory.
+
+    <script type="text/javascript" src="helpers.js"></script>
+
+Now, to use Relacx the Relacx.js file is needed, available in dist directory
+
+    <script type="text/javascript" src="relacx.js"></script>
+
+After this you can add your project's script files.
 
 #####
 #### Usage
