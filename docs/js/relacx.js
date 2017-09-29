@@ -162,6 +162,8 @@
     function render(Component, container, options) {
         var Controller = getBaseController();
         var properties = controllers[Component.name] || {};
+        options.props = options.props || {};
+        options.state = options.state || {};
 
         var baseComponent = React.createElement(BaseComponent, { init: Controller,
             comp: Component,
