@@ -155,7 +155,11 @@
                              </BaseComponent>
 
         if(container){
-            ReactDOM.render(baseComponent,container);
+            ReactDOM.render(baseComponent,container, function(){
+                if(options.afterRender && (typeof options.afterRender === 'function')){
+                    options.afterRender();
+                }
+            });
         }else{
             return baseComponent;
         }
