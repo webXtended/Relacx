@@ -1,11 +1,11 @@
 'use strict';
 
 /*!
- * React_ComponentController v2.0
+ * Relacx v2.0
  *
  * Copyright 2017, Himanshu Tanwar
  * Released under the MIT license
- * https://github.com/webXtended/react_componentController
+ * https://github.com/webXtended/Relacx
  * Date: 2017-09-19
  */
 (function (name, context, definition) {
@@ -170,7 +170,11 @@
             callback: options.callback });
 
         if (container) {
-            ReactDOM.render(baseComponent, container);
+            ReactDOM.render(baseComponent, container, function () {
+                if (options.afterRender && typeof options.afterRender === 'function') {
+                    options.afterRender();
+                }
+            });
         } else {
             return baseComponent;
         }
