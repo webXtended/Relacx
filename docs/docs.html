@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Relacx JS - Docs</title>
+
+    <link type="text/css" rel="stylesheet" href="./css/common.css"/>
+
+    <style>
+        section.installation {
+            padding-top: 10px;
+        }
+
+        code {
+            background-color: rgba(59, 59, 142, 0.18);
+            padding: 5px 10px;
+            border-radius: 2px;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .sectionContent {
+            padding-left: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+    <div id="headerWrapper">
+        <div id="logo">Relacx</div>
+        <div id="headerContent">
+            <div class="headerItem">
+                <a href="/tutorials">Docs</a>
+            </div>
+            <div class="headerItem">
+                <a href="/tutorials">Tutorials</a>
+            </div>
+            <div class="headerItem">
+                <a href="/examples">Examples</a>
+            </div>
+        </div>
+        <div id="externalLink">
+            <div class="externalItem">
+                <a href="https://github.com/webXtended/Relacx" target="_blank">
+                    Github
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="content">
+
+    <section class="installation">
+        <h2>Installation</h2>
+        <div class="sectionContent">
+            <p>
+                For using Relacx you need to include 4 resources,
+                <br><br>
+                <strong>React JS</strong> <br>
+                <strong>React-Dom JS</strong> <br>
+                <strong>Babel Helpers</strong> <br>
+                <strong>Relacx JS</strong> <br>
+            </p>
+
+            <p>
+                Since Relacx is a state manager for React, it requires React.js and React-Dom.js to be available
+                <br>
+                The current tested version of Relacx uses React version 15.5.4
+            </p>
+
+            <p>
+                The resources available in the script tag below can be used or you can also visit
+                <a href="https://reactjs.org/" target="_blank">React's official page</a> and
+                follow your choice of installation for both React and React-Dom.
+            </p>
+
+            <pre>Non-Minified</pre>
+            <code>
+                &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/resources/react.js"&gt;&lt;/script&gt;
+            </code>
+            <code>
+                &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/resources/react-dom.js"&gt;&lt;/script&gt;
+            </code>
+
+            <pre>Minified</pre>
+            <code>
+                &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/resources/react.min.js"&gt;&lt;/script&gt;
+            </code>
+            <code>
+                &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/resources/react-dom.min.js"&gt;&lt;/script&gt;
+            </code>
+
+            <br>
+            <p>Then you need the babel helpers JS if you are transpiling your code using babel's ES6 converter</p>
+            <code>
+                &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/resources/helpers.js"&gt;&lt;/script&gt;
+            </code>
+            <code>
+                &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/resources/helpers.min.js"&gt;&lt;/script&gt;
+            </code>
+
+            <br>
+            <p>Finally include Relacx JS</p>
+            <code>
+                &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/resources/relacx.js"&gt;&lt;/script&gt;
+            </code>
+            <code>
+                &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/resources/relacx.min.js"&gt;&lt;/script&gt;
+            </code>
+        </div>
+    </section>
+
+
+
+</div>
+
+<footer>
+    <div class="copyright"><span class="icon">©</span> 2017 Himanshu Tanwar</div>
+
+</footer>
+</body>
+</html>
