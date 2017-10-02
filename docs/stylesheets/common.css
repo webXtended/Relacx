@@ -80,10 +80,17 @@ div#logo {
     color: #47b5aa;
 }
 
+
+
 .headerItem a,
 #externalLink a {
     color: inherit;
     text-decoration: none;
+}
+
+#logo a {
+    text-decoration: none;
+    color: inherit;
 }
 
 
