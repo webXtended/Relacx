@@ -111,7 +111,7 @@
             data = data[prop];
         }
         var dataKey = key.pop();
-        data[dataKey] = item[dataKey] || item;
+        data[dataKey] = item;
         return obj;
     }
 
