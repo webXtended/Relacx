@@ -7,9 +7,49 @@
     <link type="text/css" rel="stylesheet" href="stylesheets/common.css"/>
     <link type="text/css" rel="stylesheet" href="stylesheets/home.css"/>
 
+    <link type="text/css" rel="stylesheet" href="stylesheets/todoStyle.css"/>
+
     <style>
         section.example {
             padding-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        iframe {
+            min-height: 200px;
+        }
+
+        .tableContainer{
+            word-spacing: -5px;
+        }
+
+        component, controller, actions, broadcast_actions, action_listerners{
+            display: inline-block;
+            padding: 5px;
+            border-bottom: 1px solid black;
+            word-spacing: normal;
+            font-size: 14px;
+        }
+
+        component {
+            display: inline-block;
+            width: 120px;
+        }
+
+        controller {
+            width: 200px;
+        }
+
+        actions {
+            width: 240px;
+        }
+
+        broadcast_actions {
+            width: 150px;
+        }
+
+        action_listerners {
+            width: 180px;
         }
 
     </style>
@@ -62,7 +102,74 @@
                 4. A notification should should come up after every save and delete.
             </p>
 
+            <p>This is how the app looks, try adding some todo's</p>
+            <div id="app"></div>
+            <br><br>
+            <p>
+                The application consists of 5 React component :
+            </p>
+            <p>
+                1. <strong>TodoApp</strong> - the root container<br>
+                2. <strong>AddTodo</strong> - for getting todo input <br>
+                3. <strong>TodoList</strong> - for maintaining list of todo's<br>
+                4. <strong>TodoItem</strong> - for maintaining each todo item <br>
+                5. <strong>TodoNotification</strong> - for showing notifications
+            </p>
 
+            <p>
+                Excluding TodoApp, the 4 other components have a controller.<br>
+                Here is an overview of all the components and their controllers.
+            </p>
+
+            <p class="tableContainer">
+                <component><strong>Component</strong></component>
+                <controller><strong>Controller</strong></controller>
+                <actions><strong>Actions</strong></actions>
+                <broadcast_actions><strong>BroadcastActions</strong></broadcast_actions>
+                <action_listerners><strong>Action Listeners</strong></action_listerners>
+                <br>
+
+                <component>AddTodo</component>
+                <controller>AddTodoController</controller>
+                <actions>add, changeAction, onkeyPress</actions>
+                <broadcast_actions>TODO_ADDED</broadcast_actions>
+                <action_listerners>TODO_ADDED</action_listerners>
+                <br>
+
+
+                <component>TodoList</component>
+                <controller>TodoListController</controller>
+                <actions>none</actions>
+                <broadcast_actions>none</broadcast_actions>
+                <action_listerners>TODO_ADDED, TODO_DELETED</action_listerners>
+                <br>
+
+                <component>TodoItem</component>
+                <controller>ToDoItemController</controller>
+                <actions>delete</actions>
+                <broadcast_actions>none</broadcast_actions>
+                <action_listerners>none</action_listerners>
+                <br>
+
+                <component>TodoNotification</component>
+                <controller>TodoNotificationController</controller>
+                <actions>none</actions>
+                <broadcast_actions>none</broadcast_actions>
+                <action_listerners>TODO_ADDED, TODO_DELETED, REMOVE_NOTIFICATION</action_listerners>
+                <br>
+
+            </p>
+
+            <p>
+                Note that the ToDoItemController does not have a broadcast action named "TODO_DELETED", it just has
+                an action named "delete" and inside that action Relacx.broadcastAction is used.
+                <br>
+                This is just done for demonstration purposes to show the use of Relacx.broadcastAction, doing this by
+                adding a broadcastAction would also work.
+            </p>
+
+
+            <script async src="//jsfiddle.net/08th0n7w/1/embed/js,html,css,result/dark/"></script>
 
         </div>
     </section>
@@ -70,7 +177,16 @@
 
 <footer>
     <div class="copyright"><span class="icon">©</span> 2017 Himanshu Tanwar</div>
-
 </footer>
+
+
+<script src="js/resources/react.js"></script>
+<script src="js/resources/react-dom.js"></script>
+<script src="js/resources/helpers.js"></script>
+<script src="js/resources/relacx.js"></script>
+
+<script src="js/todoComp.js"></script>
+<script src="js/TodoApp.js"></script>
+
 </body>
 </html>
