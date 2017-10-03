@@ -25,6 +25,46 @@
         .tutorialItem {
             margin-top: 60px;
         }
+
+        ul {
+            list-style-type: none;
+        }
+
+        section.leftNav {
+            position: fixed;
+            left: 0;
+            top: 65px;
+        }
+
+        li.navItem.active {
+            color: black;
+            border-left: 4px solid #47b5aa;
+            background-color: #e8e5e5;
+        }
+
+        li.navItem {
+            height: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            color: gray;
+            padding-top: 8px;
+            padding-left: 5px;
+            border-left: 4px solid transparent;
+        }
+
+
+        li.navItem a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h3:before {
+            display: block;
+            content: " ";
+            height: 70px;      /* Give height of your fixed element */
+            margin-top: -70px; /* Give negative margin of your fixed element */
+            visibility: hidden;
+        }
     </style>
 
 </head>
@@ -57,6 +97,18 @@
 
     <section class="tutorials">
         <h2>Tutorials</h2>
+        <section class="leftNav">
+            <ul>
+                <li class="navItem"><a href="#hello_relacx">Hello Relacx</a></li>
+                <li class="navItem"><a href="#app_ready">App Ready</a></li>
+                <li class="navItem"><a href="#passing_state">Passing State</a></li>
+                <li class="navItem"><a href="#updating_state">Updating State</a></li>
+                <li class="navItem"><a href="#action_listener">Action Listener</a></li>
+                <li class="navItem"><a href="#broadcasting_action">Broadcasting Action</a></li>
+                <li class="navItem"><a href="#update_parent_state">Update Parent State</a></li>
+            </ul>
+        </section>
+
         <div class="sectionContent">
             <p>Now we shall learn using Relacx by some step by step tutorials.</p>
             <p>
@@ -65,7 +117,7 @@
             </p>
 
             <div class="tutorialItem">
-                <h3>Hello Relacx</h3>
+                <h3 id="hello_relacx">Hello Relacx</h3>
 
                 <p>
                     Here we have a React component named App and it renders a text in H1 tag.
@@ -81,7 +133,7 @@
             </div>
 
             <div class="tutorialItem">
-                <h3>App Ready</h3>
+                <h3 id="app_ready">App Ready</h3>
                 <p>
                     This is similar to the Hello Relacx tutorial. The difference is in the render method where the
                     after render property is being used in the options parameter.
@@ -93,7 +145,7 @@
             </div>
 
             <div class="tutorialItem">
-                <h3>Passing State</h3>
+                <h3 id="passing_state">Passing State</h3>
                 <p>
                     Passing state is as simple as passing props. In the options parameter of render method pass in
                     the state object using state as key.
@@ -123,7 +175,7 @@
 
             <div class="tutorialItem">
 
-                <h3>Updating State</h3>
+                <h3 id="updating_state">Updating State</h3>
 
                 <p>
                     State changes are required when some action occurs. Actions can be anything like a button click,
@@ -151,7 +203,7 @@
             </div>
 
             <div class="tutorialItem">
-                <h3>Action Listener</h3>
+                <h3 id="action_listener">Action Listener</h3>
 
                 <p>
                     Action listeners are used to respond to actions outside the scope of the component.
@@ -206,7 +258,7 @@
             </div>
 
             <div class="tutorialItem">
-                <h3>Broadcasting Action</h3>
+                <h3 id="broadcasting_action">Broadcasting Action</h3>
 
                 <p>
                     In the previous tutorial we learnt how to broadcast an action and how to use an action listener to
@@ -268,7 +320,7 @@ TimesNoteController.addActionListener("TIME_CLICK", function(action, data){
             </div>
 
             <div class="tutorialItem">
-                <h3>Update Parent State</h3>
+                <h3 id="update_parent_state">Update Parent State</h3>
                 <p>
                     So we have learned a lot about about Relacx and how you can attach actions to components, trigger actions,
                     broadcast them, and update the state of the component.
@@ -377,5 +429,53 @@ TimesNoteController.addActionListener("TIME_CLICK", function(action, data){
 <footer>
     <div class="copyright"><span class="icon">©</span> 2017 Himanshu Tanwar</div>
 </footer>
+
+<script type="application/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(document).on("scroll", onScroll);
+
+        //smoothscroll
+        $('a[href^="#"]').on('click', function (e) {
+            e.preventDefault();
+            $(document).off("scroll");
+
+            $('a').each(function () {
+                $(this.parentNode).removeClass('active');
+            });
+            $(this.parentNode).addClass('active');
+
+            var target = this.hash,
+                menu = target;
+            $target = $(target);
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top+2
+            }, 500, 'swing', function () {
+                window.location.hash = target;
+                $(document).on("scroll", onScroll);
+            });
+        });
+    });
+
+    function onScroll(event){
+        var scrollPos = $(document).scrollTop() + 30;
+        $('.leftNav a').each(function () {
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+            if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() < scrollPos) {
+                $('.leftNav ul li').removeClass("active");
+                $(currLink[0].parentNode).addClass("active");
+            }
+            else{
+                $(currLink[0].parentNode).removeClass("active");
+            }
+        });
+    }
+
+
+
+</script>
+
 </body>
 </html>
