@@ -135,6 +135,16 @@ section{
 }
 
 
+code {
+    background-color: rgba(59, 59, 142, 0.18);
+    padding: 5px 10px;
+    border-radius: 2px;
+    display: block;
+    margin: 5px 0;
+    overflow: auto;
+}
+
+
 .navIcon {
     width: 30px;
     height: 30px;
@@ -180,7 +190,7 @@ span.bar {
     div#headerContent.open {
         display: block;
         background-color: #272626;
-        width: 100px;
+        width: 120px;
         padding: 10px;
         position: absolute;
         right: 0px;
@@ -190,6 +200,7 @@ span.bar {
 
     .headerItem {
         padding: 5px 10px;
+        width: 100%;
     }
 
     .headerItem.active:after {
