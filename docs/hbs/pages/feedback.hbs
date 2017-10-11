@@ -1,0 +1,27 @@
+{{#> layouts/base title="Relacx JS - Feedback" }}
+
+    {{#*inline "head-block"}}
+        <style>
+            iframe {
+                width: 100%;
+                min-height: 100vh;
+                position: relative;
+                top: 50px;
+            }
+
+            body {
+                overflow: hidden;
+            }
+        </style>
+    {{/inline}}
+
+    {{#*inline "header-block"}}
+        {{> includes/header}}
+    {{/inline}}
+
+
+    {{#*inline "content-block"}}
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfyq8ZQTLZzIZIWtyZc3AEd-qSACSvW1nWghlOgTBBp0xyqfg/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+    {{/inline}}
+
+{{/layouts/base}}

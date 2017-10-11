@@ -1,221 +1,180 @@
-<!DOCTYPE html>
-<html lang="en">
+<!--https://cloudfour.com/thinks/the-hidden-power-of-handlebars-partials/#fn-4803-5-->
+
+<!doctype html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Relacx JS - Tutorials</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>
+            Relacs JS - Tutorials
+    </title>
 
     <link type="text/css" rel="stylesheet" href="stylesheets/common.css"/>
-    <style>
-        section.tutorials {
-            padding-top: 10px;
-            padding-left: 200px;
-        }
 
-        code {
-            background-color: rgba(59, 59, 142, 0.18);
-            padding: 5px 10px;
-            border-radius: 2px;
-            display: block;
-            margin: 5px 0;
-        }
-
-        .sectionContent {
-            padding-left: 20px;
-        }
-
-        .tutorialItem {
-            margin-top: 60px;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        section.leftNav {
-            position: fixed;
-            left: 0;
-            top: 65px;
-        }
-
-        li.navItem.active {
-            color: black;
-            border-left: 4px solid #47b5aa;
-            background-color: #e8e5e5;
-        }
-
-        li.navItem {
-            height: 30px;
-            font-size: 14px;
-            font-weight: bold;
-            color: gray;
-            padding-top: 8px;
-            padding-left: 5px;
-            border-left: 4px solid transparent;
-        }
-
-
-        li.navItem a{
-            text-decoration: none;
-            color: inherit;
-        }
-
-        h3:before {
-            display: block;
-            content: " ";
-            height: 70px;      /* Give height of your fixed element */
-            margin-top: -70px; /* Give negative margin of your fixed element */
-            visibility: hidden;
-        }
-    </style>
+        <link type="text/css" rel="stylesheet" href="stylesheets/tutorials.css"/>
 
 </head>
+
 <body>
-<header>
-    <div id="headerWrapper">
-        <div id="logo"><a href="/Relacx">Relacx</a></div>
-        <div id="headerContent">
-            <div class="headerItem">
-                <a href="docs">Docs</a>
+
+        <header>
+            <div id="headerWrapper">
+                <div id="logo"><a href="/Relacx">Relacx</a></div>
+        
+                <div class="navIcon">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+        
+                <div id="headerContent">
+                    <div class="headerItem">
+                        <a href="docs">Docs</a>
+                    </div>
+                    <div class="headerItem active">
+                        <a href="tutorials">Tutorials</a>
+                    </div>
+                    <div class="headerItem">
+                        <a href="example">Example</a>
+                    </div>
+                    <div class="headerItem">
+                        <a href="feedback">Feedback</a>
+                    </div>
+                </div>
+        
+        
+                <div id="externalLink">
+                    <div class="externalItem">
+                        <a href="https://github.com/webXtended/Relacx" target="_blank">
+                            Github
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="headerItem">
-                <a href="tutorials">Tutorials</a>
-            </div>
-            <div class="headerItem">
-                <a href="example">Example</a>
-            </div>
-        </div>
-        <div id="externalLink">
-            <div class="externalItem">
-                <a href="https://github.com/webXtended/Relacx" target="_blank">
-                    Github
-                </a>
-            </div>
-        </div>
-    </div>
-</header>
+        </header>
 
-<div id="content">
+        <div id="content">
 
-    <section class="tutorials">
-        <h2>Tutorials</h2>
-        <section class="leftNav">
-            <ul>
-                <li class="navItem"><a href="#hello_relacx">Hello Relacx</a></li>
-                <li class="navItem"><a href="#app_ready">App Ready</a></li>
-                <li class="navItem"><a href="#passing_state">Passing State</a></li>
-                <li class="navItem"><a href="#updating_state">Updating State</a></li>
-                <li class="navItem"><a href="#action_listener">Action Listener</a></li>
-                <li class="navItem"><a href="#broadcasting_action">Broadcasting Action</a></li>
-                <li class="navItem"><a href="#update_parent_state">Update Parent State</a></li>
-            </ul>
-        </section>
+            <section class="tutorials">
+                <h2>Tutorials</h2>
+                <section class="leftNav">
+                    <ul>
+                        <li class="navItem"><a href="#hello_relacx">Hello Relacx</a></li>
+                        <li class="navItem"><a href="#app_ready">App Ready</a></li>
+                        <li class="navItem"><a href="#passing_state">Passing State</a></li>
+                        <li class="navItem"><a href="#updating_state">Updating State</a></li>
+                        <li class="navItem"><a href="#action_listener">Action Listener</a></li>
+                        <li class="navItem"><a href="#broadcasting_action">Broadcasting Action</a></li>
+                        <li class="navItem"><a href="#update_parent_state">Update Parent State</a></li>
+                    </ul>
+                </section>
 
-        <div class="sectionContent">
-            <p>Now we shall learn using Relacx by some step by step tutorials.</p>
-            <p>
-                To know more about the syntax and methods available in Relacx, please go through
-                our <a href="docs" target="_blank">docs</a>.
-            </p>
+                <div class="sectionContent">
+                    <p>Now we shall learn using Relacx by some step by step tutorials.</p>
+                    <p>
+                        To know more about the syntax and methods available in Relacx, please go through
+                        our <a href="docs" target="_blank">docs</a>.
+                    </p>
 
-            <div class="tutorialItem">
-                <h3 id="hello_relacx">Hello Relacx</h3>
+                    <div class="tutorialItem">
+                        <h3 id="hello_relacx">Hello Relacx</h3>
 
-                <p>
-                    Here we have a React component named App and it renders a text in H1 tag.
-                    <br>
-                    The text to be rendered is passed in the props object.
-                </p>
+                        <p>
+                            Here we have a React component named App and it renders a text in H1 tag.
+                            <br>
+                            The text to be rendered is passed in the props object.
+                        </p>
 
-                <p>
-                    To render a component in a DOM node, the render method is used.
-                </p>
+                        <p>
+                            To render a component in a DOM node, the render method is used.
+                        </p>
 
-                <script async src="//jsfiddle.net/9d02gqkd/1/embed/js,html,result/dark/"></script>
-            </div>
+                        <script async src="//jsfiddle.net/9d02gqkd/1/embed/js,result/dark/"></script>
+                    </div>
 
-            <div class="tutorialItem">
-                <h3 id="app_ready">App Ready</h3>
-                <p>
-                    This is similar to the Hello Relacx tutorial. The difference is in the render method where the
-                    after render property is being used in the options parameter.
-                    <br>
-                    The after render method is triggered just after the Component is rendered.
-                </p>
+                    <div class="tutorialItem">
+                        <h3 id="app_ready">App Ready</h3>
+                        <p>
+                            This is similar to the Hello Relacx tutorial. The difference is in the render method where the
+                            after render property is being used in the options parameter.
+                            <br>
+                            The after render method is triggered just after the Component is rendered.
+                        </p>
 
-                <script async src="//jsfiddle.net/dtndt7yn/1/embed/js,html,result/dark/"></script>
-            </div>
+                        <script async src="//jsfiddle.net/dtndt7yn/1/embed/js,result/dark/"></script>
+                    </div>
 
-            <div class="tutorialItem">
-                <h3 id="passing_state">Passing State</h3>
-                <p>
-                    Passing state is as simple as passing props. In the options parameter of render method pass in
-                    the state object using state as key.
-                </p>
-                <p>
-                    <code>NOTE: state is available in the component in props, i.e
-                        <br>
-                        this.props.state
-                    </code>
-                </p>
+                    <div class="tutorialItem">
+                        <h3 id="passing_state">Passing State</h3>
+                        <p>
+                            Passing state is as simple as passing props. In the options parameter of render method pass in
+                            the state object using state as key.
+                        </p>
+                        <p>
+                            <code>NOTE: state is available in the component in props, i.e
+                                <br>
+                                this.props.state
+                            </code>
+                        </p>
 
-                <p>
-                    In the code you can see that the render method passes state with one property "time"
-                    <br>
-                    The time property is used in App as "this.props.state.time" which is furthur passed to the Clock
-                    component.
-                </p>
+                        <p>
+                            In the code you can see that the render method passes state with one property "time"
+                            <br>
+                            The time property is used in App as "this.props.state.time" which is furthur passed to the Clock
+                            component.
+                        </p>
 
-                <p>
-                    This may look the same as props but it is different, because state can be changed.
-                    <br>
-                    The next tutorial shows how to update the state.
-                </p>
+                        <p>
+                            This may look the same as props but it is different, because state can be changed.
+                            <br>
+                            The next tutorial shows how to update the state.
+                        </p>
 
-                <script async src="//jsfiddle.net/a467vump/1/embed/js,html,result/dark/"></script>
-            </div>
+                        <script async src="//jsfiddle.net/a467vump/1/embed/js,result/dark/"></script>
+                    </div>
 
-            <div class="tutorialItem">
+                    <div class="tutorialItem">
 
-                <h3 id="updating_state">Updating State</h3>
+                        <h3 id="updating_state">Updating State</h3>
 
-                <p>
-                    State changes are required when some action occurs. Actions can be anything like a button click,
-                    key press, mouse move etc.
-                    <br>
-                    Responding to actions requires controllers with functions in them for every action.
-                </p>
+                        <p>
+                            State changes are required when some action occurs. Actions can be anything like a button click,
+                            key press, mouse move etc.
+                            <br>
+                            Responding to actions requires controllers with functions in them for every action.
+                        </p>
 
-                <p>
-                    A controller in Relacx is created by the controller method. In the tutorial, a controller for the
-                    Clock component is being created.
+                        <p>
+                            A controller in Relacx is created by the controller method. In the tutorial, a controller for the
+                            Clock component is being created.
 
-                    <code>let ClockController = Relacx.controller(Clock);</code>
+                            <code>let ClockController = Relacx.controller(Clock);</code>
 
-                    The ClockController can now be used to add actions to it using the addAction method.
-                </p>
+                            The ClockController can now be used to add actions to it using the addAction method.
+                        </p>
 
-                <p>
-                    To attach actions to the component, the action method in the controller; available in props; is used.
-                    <code>this.props.controller.action("updateClick");</code>
+                        <p>
+                            To attach actions to the component, the action method in the controller; available in props; is used.
+                            <code>this.props.controller.action("updateClick");</code>
 
-                </p>
+                        </p>
 
-                <script async src="//jsfiddle.net/m64chu4j/1/embed/js,html,result/dark/"></script>
-            </div>
+                        <script async src="//jsfiddle.net/m64chu4j/1/embed/js,result/dark/"></script>
+                    </div>
 
-            <div class="tutorialItem">
-                <h3 id="action_listener">Action Listener</h3>
+                    <div class="tutorialItem">
+                        <h3 id="action_listener">Action Listener</h3>
 
-                <p>
-                    Action listeners are used to respond to actions outside the scope of the component.
-                </p>
+                        <p>
+                            Action listeners are used to respond to actions outside the scope of the component.
+                        </p>
 
-                <p>
-                    In the code you can see the ClockController has an actionListener by the name "UPDATE_TIME".
+                        <p>
+                            In the code you can see the ClockController has an actionListener by the name "UPDATE_TIME".
 
-                </p>
+                        </p>
 
-<pre>
+                        <pre>
     <code>
         ClockController.addActionListener("UPDATE_TIME", function(){
             this.setState({
@@ -225,23 +184,23 @@
     </code>
 </pre>
 
-                <p>
-                    The action in this tutorial is triggered from the afterRender property in the render method.
-                </p>
+                        <p>
+                            The action in this tutorial is triggered from the afterRender property in the render method.
+                        </p>
 
-                <code>Relacx.broadcastAction("UPDATE_TIME");</code>
+                        <code>Relacx.broadcastAction("UPDATE_TIME");</code>
 
-            <p>
-                As mentioned in the <a href="docs">docs</a>, Action Listeners can also take the 1st parameter
-                as an array of action names, the function attached to the action listener receives 2 parameters,
-                the action name and some data associated with the action.
-                <br>
-                For this tutorial we did not need any data, nor we needed to check which action has been triggered since
-                we are listening to only one action.
-                <br><br>
-                For more clarification here is a sample example:
+                        <p>
+                            As mentioned in the <a href="docs">docs</a>, Action Listeners can also take the 1st parameter
+                            as an array of action names, the function attached to the action listener receives 2 parameters,
+                            the action name and some data associated with the action.
+                            <br>
+                            For this tutorial we did not need any data, nor we needed to check which action has been triggered since
+                            we are listening to only one action.
+                            <br><br>
+                            For more clarification here is a sample example:
 
-                <pre>
+                        <pre>
     <code>
         ClockController.addActionListener(["UPDATE_TIME", "RESET_TIME"], function(actionName, data){
             if(actionName === "UPDATE_TIME"){
@@ -253,36 +212,36 @@
     </code>
 </pre>
 
-            </p>
+                        </p>
 
-                <script async src="//jsfiddle.net/3L63w2Lh/1/embed/js,html,result/dark/"></script>
-            </div>
+                        <script async src="//jsfiddle.net/3L63w2Lh/1/embed/js,result/dark/"></script>
+                    </div>
 
-            <div class="tutorialItem">
-                <h3 id="broadcasting_action">Broadcasting Action</h3>
+                    <div class="tutorialItem">
+                        <h3 id="broadcasting_action">Broadcasting Action</h3>
 
-                <p>
-                    In the previous tutorial we learnt how to broadcast an action and how to use an action listener to
-                    respond to the action.
-                    <br>
-                    In this tutorial we will learn how to create actions which automatically broadcast also.
-                </p>
+                        <p>
+                            In the previous tutorial we learnt how to broadcast an action and how to use an action listener to
+                            respond to the action.
+                            <br>
+                            In this tutorial we will learn how to create actions which automatically broadcast also.
+                        </p>
 
-                <p>
-                    In the code you can see a new component named NoteTime, this component will note down the time each
-                    time the clock is clicked.
-                </p>
+                        <p>
+                            In the code you can see a new component named NoteTime, this component will note down the time each
+                            time the clock is clicked.
+                        </p>
 
-                <p>
-                    This time instead of adding an action to the ClockController, we have added a broadcastAction.
-                    <br>
-                    This works the same way as an action, the only difference being that the name of the action is used
-                    to broadcast that action and whatevet the action returns is passed to all the action listeners listening
-                    to that action.
-                </p>
+                        <p>
+                            This time instead of adding an action to the ClockController, we have added a broadcastAction.
+                            <br>
+                            This works the same way as an action, the only difference being that the name of the action is used
+                            to broadcast that action and whatevet the action returns is passed to all the action listeners listening
+                            to that action.
+                        </p>
 
 
-<pre>
+                        <pre>
     <code>
 ClockController.addBroadcastAction("TIME_CLICK", function(){
     let currentTime = this.getState().time;
@@ -291,18 +250,18 @@ ClockController.addBroadcastAction("TIME_CLICK", function(){
     </code>
 </pre>
 
-            <p>
-                The code snippet above shows how to add a broadcast action, you can see it is the exact same as addAction method.
-            </p>
-            <p>
-                The NoteTime component has a controller named TimesNoteController with an action listener for "TIME_CLICK".
-                <br>
-                Whenever the TIME_CLICK action is performed, the returned data i.e the date object in this tutorial is available
-                in the TimesNoteController's action listener for TIME_CLICK, and then that data is used by the controller to update
-                it's component's state.
-            </p>
+                        <p>
+                            The code snippet above shows how to add a broadcast action, you can see it is the exact same as addAction method.
+                        </p>
+                        <p>
+                            The NoteTime component has a controller named TimesNoteController with an action listener for "TIME_CLICK".
+                            <br>
+                            Whenever the TIME_CLICK action is performed, the returned data i.e the date object in this tutorial is available
+                            in the TimesNoteController's action listener for TIME_CLICK, and then that data is used by the controller to update
+                            it's component's state.
+                        </p>
 
-<pre>
+                        <pre>
     <code>
 TimesNoteController.addActionListener("TIME_CLICK", function(action, data){
    var list = this.getState().list;
@@ -317,55 +276,55 @@ TimesNoteController.addActionListener("TIME_CLICK", function(action, data){
 
 
 
-                <script async src="//jsfiddle.net/1r1jvpa4/1/embed/js,html,result/dark/"></script>
-            </div>
+                        <script async src="//jsfiddle.net/1r1jvpa4/1/embed/js,result/dark/"></script>
+                    </div>
 
-            <div class="tutorialItem">
-                <h3 id="update_parent_state">Update Parent State</h3>
-                <p>
-                    So we have learned a lot about about Relacx and how you can attach actions to components, trigger actions,
-                    broadcast them, and update the state of the component.
-                    <br>
-                    Uptill now we have not discussed how the state is being managed in Relacx.
-                </p>
-                <p>
-                    This is the only part in Relacx where you need to take care and it forms the basis of state management.
-                </p>
-                <p>
-                    All the tutorials we have went through work just fine, but they do not affect the state of the parent,
-                    <br>
-                    If you go ahead and try creating a controller for the App component, which is our root component, and try to
-                    update the state of any child inside it, nothing will happen.
-                    <br>
-                    or if you try getting the state using the getState method, you will get back what you passed into the
-                     state object in render method and not the updated state.
-                </p>
-                <p>
-                    This is because all the components inside the App component are independent of the parent's state.
-                    If you want to update the parent's state whenever the child state changes then you need to tell
-                    Relacx by passing the parent's reference in the parent object along with the path in the parent's
-                    state which will be updated by the child.
-                </p>
+                    <div class="tutorialItem">
+                        <h3 id="update_parent_state">Update Parent State</h3>
+                        <p>
+                            So we have learned a lot about about Relacx and how you can attach actions to components, trigger actions,
+                            broadcast them, and update the state of the component.
+                            <br>
+                            Uptill now we have not discussed how the state is being managed in Relacx.
+                        </p>
+                        <p>
+                            This is the only part in Relacx where you need to take care and it forms the basis of state management.
+                        </p>
+                        <p>
+                            All the tutorials we have went through work just fine, but they do not affect the state of the parent,
+                            <br>
+                            If you go ahead and try creating a controller for the App component, which is our root component, and try to
+                            update the state of any child inside it, nothing will happen.
+                            <br>
+                            or if you try getting the state using the getState method, you will get back what you passed into the
+                            state object in render method and not the updated state.
+                        </p>
+                        <p>
+                            This is because all the components inside the App component are independent of the parent's state.
+                            If you want to update the parent's state whenever the child state changes then you need to tell
+                            Relacx by passing the parent's reference in the parent object along with the path in the parent's
+                            state which will be updated by the child.
+                        </p>
 
-                <p>
-                    This tutorial works the same way as the previous one, note here when we are creating the Clock
-                    component in the App's render method.
-                    <br>
-                    This time there are 2 more properties being passed in the options parameter of component method.
-                    <br>
-                    <strong>parent</strong> and <strong>childPath</strong>
-                    <br><br>
-                    What these 2 properties tell Relacx is that :<br>
-                    1. The parent component of Clock is "this", i.e the App component <br>
-                    2. The state of the Clock component is in the property called "time" in the state of the parent component.
-                </p>
+                        <p>
+                            This tutorial works the same way as the previous one, note here when we are creating the Clock
+                            component in the App's render method.
+                            <br>
+                            This time there are 2 more properties being passed in the options parameter of component method.
+                            <br>
+                            <strong>parent</strong> and <strong>childPath</strong>
+                            <br><br>
+                            What these 2 properties tell Relacx is that :<br>
+                            1. The parent component of Clock is "this", i.e the App component <br>
+                            2. The state of the Clock component is in the property called "time" in the state of the parent component.
+                        </p>
 
-                <p>
-                    To understand this further, lets take another example.<br>
-                    Suppose the state in the render method of Relacx was the following:
-                </p>
+                        <p>
+                            To understand this further, lets take another example.<br>
+                            Suppose the state in the render method of Relacx was the following:
+                        </p>
 
-<pre>
+                        <pre>
     <code>
     Relacx.render(App, document.getElementById("app"), {
         state:{
@@ -378,12 +337,12 @@ TimesNoteController.addActionListener("TIME_CLICK", function(action, data){
     });</code>
 </pre>
 
-                <p>
-                   Then the clock instance in the render method of App would be as follow :
-                </p>
+                        <p>
+                            Then the clock instance in the render method of App would be as follow :
+                        </p>
 
 
-<pre>
+                        <pre>
     <code>
     let clock = Relacx.component(Clock, {
             state : {time:this.props.state.clock.time},
@@ -393,90 +352,88 @@ TimesNoteController.addActionListener("TIME_CLICK", function(action, data){
     </code>
 </pre>
 
-              <p>
-                  Note that the path is concatenated with the DOT operator ("clock.time").
-              </p>
+                        <p>
+                            Note that the path is concatenated with the DOT operator ("clock.time").
+                        </p>
 
-              <p>
-                  So the childPath is simply the path in the parent's state where the child's state resides.
-                  <br>
-                  For instance, when you are creating components in a loop, your child path should contain the index
-                  of the data element.
-                  <br>
-                  Like "list.5", to reference the element at position 5 of the list.
-              </p>
+                        <p>
+                            So the childPath is simply the path in the parent's state where the child's state resides.
+                            <br>
+                            For instance, when you are creating components in a loop, your child path should contain the index
+                            of the data element.
+                            <br>
+                            Like "list.5", to reference the element at position 5 of the list.
+                        </p>
 
 
-                <script async src="//jsfiddle.net/ooL3da0p/3/embed/js,html,result/dark/"></script>
-            </div>
+                        <script async src="//jsfiddle.net/ooL3da0p/3/embed/js,result/dark/"></script>
+                    </div>
+
+                </div>
+
+                <br>
+                <h2>We are done !!!</h2>
+
+                <p>
+                    So this is all there is in Relacx. Move over to the example section to check out a working code.
+                </p>
+            </section>
+
+            <br>
+            <br>
+            <br>
+
 
         </div>
 
-        <br>
-        <h2>We are done !!!</h2>
-
-        <p>
-            So this is all there is in Relacx. Move over to the example section to check out a working code.
-        </p>
-    </section>
-
-    <br>
-    <br>
-    <br>
-
-
-</div>
-
-<footer>
-    <div class="copyright"><span class="icon">©</span> 2017 Himanshu Tanwar</div>
-</footer>
-
-<script type="application/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $(document).on("scroll", onScroll);
-
-        //smoothscroll
-        $('a[href^="#"]').on('click', function (e) {
-            e.preventDefault();
-            $(document).off("scroll");
-
-            $('a').each(function () {
-                $(this.parentNode).removeClass('active');
-            });
-            $(this.parentNode).addClass('active');
-
-            var target = this.hash,
-                menu = target;
-            $target = $(target);
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top+2
-            }, 500, 'swing', function () {
-                window.location.hash = target;
+        <footer>
+            <div class="copyright"><span class="icon">©</span> 2017 Himanshu Tanwar</div>
+        </footer>
+        <script type="application/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script>
+            $(document).ready(function () {
                 $(document).on("scroll", onScroll);
+
+                //smoothscroll
+                $('a[href^="#"]').on('click', function (e) {
+                    e.preventDefault();
+                    $(document).off("scroll");
+
+                    $('a').each(function () {
+                        $(this.parentNode).removeClass('active');
+                    });
+                    $(this.parentNode).addClass('active');
+
+                    var target = this.hash,
+                            menu = target;
+                    $target = $(target);
+                    $('html, body').stop().animate({
+                        'scrollTop': $target.offset().top+2
+                    }, 500, 'swing', function () {
+                        window.location.hash = target;
+                        $(document).on("scroll", onScroll);
+                    });
+                });
             });
-        });
-    });
 
-    function onScroll(event){
-        var scrollPos = $(document).scrollTop() + 30;
-        $('.leftNav a').each(function () {
-            var currLink = $(this);
-            var refElement = $(currLink.attr("href"));
-            if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() < scrollPos) {
-                $('.leftNav ul li').removeClass("active");
-                $(currLink[0].parentNode).addClass("active");
+            function onScroll(event){
+                var scrollPos = $(document).scrollTop() + 30;
+                $('.leftNav a').each(function () {
+                    var currLink = $(this);
+                    var refElement = $(currLink.attr("href"));
+                    if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() < scrollPos) {
+                        $('.leftNav ul li').removeClass("active");
+                        $(currLink[0].parentNode).addClass("active");
+                    }
+                    else{
+                        $(currLink[0].parentNode).removeClass("active");
+                    }
+                });
             }
-            else{
-                $(currLink[0].parentNode).removeClass("active");
-            }
-        });
-    }
 
 
 
-</script>
+        </script>
 
 </body>
 </html>

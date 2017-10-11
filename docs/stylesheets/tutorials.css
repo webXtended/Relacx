@@ -1,5 +1,6 @@
-section.installation {
+section.tutorials {
     padding-top: 10px;
+    padding-left: 200px;
 }
 
 code {
@@ -8,8 +9,65 @@ code {
     border-radius: 2px;
     display: block;
     margin: 5px 0;
+    overflow: auto;
 }
 
 .sectionContent {
     padding-left: 20px;
+}
+
+.tutorialItem {
+    margin-top: 60px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+section.leftNav {
+    position: fixed;
+    left: 0;
+    top: 65px;
+}
+
+li.navItem.active {
+    color: black;
+    border-left: 4px solid #47b5aa;
+    background-color: #e8e5e5;
+}
+
+li.navItem {
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+    padding-top: 8px;
+    padding-left: 5px;
+    border-left: 4px solid transparent;
+}
+
+
+li.navItem a{
+    text-decoration: none;
+    color: inherit;
+}
+
+h3:before {
+    display: block;
+    content: " ";
+    height: 70px;      /* Give height of your fixed element */
+    margin-top: -70px; /* Give negative margin of your fixed element */
+    visibility: hidden;
+}
+
+
+
+@media screen and (max-width: 700px){
+    section.tutorials {
+        padding-left: 0;
+    }
+
+    section.leftNav {
+        left: -190px;
+    }
 }

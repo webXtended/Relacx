@@ -40,6 +40,7 @@ span.icon {
 
 p{
     font-size: 1.2em;
+    text-align: justify;
 }
 
 div#content {
@@ -64,6 +65,7 @@ div#headerWrapper {
     font-size: 16px;
     margin-right: 20px;
     letter-spacing: 0.5px;
+    position: relative;
 }
 
 div#externalLink {
@@ -120,3 +122,89 @@ section{
     margin: 5px 0;
 }
 
+
+.headerItem.active:after {
+    content: "";
+    height: 2px;
+    width: calc(100% + 10px);
+    display: block;
+    position: absolute;
+    background-color: white;
+    top: 31px;
+    left: -5px;
+}
+
+
+.navIcon {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: none;
+}
+
+span.bar {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: gray;
+    margin-bottom: 5px;
+}
+
+
+@media screen and (max-width: 700px){
+    #content {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .navIcon{
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .sectionContent {
+        padding-left: 0;
+    }
+
+    #headerContent{
+        display: none;
+    }
+
+
+
+    div#headerContent.open {
+        display: block;
+        background-color: #272626;
+        width: 100px;
+        padding: 10px;
+        position: absolute;
+        right: 0px;
+        top: 50px;
+        box-shadow: 0px 3px 2px -2px rgba(0,0,0,0.27);
+    }
+
+    .headerItem {
+        padding: 5px 10px;
+    }
+
+    .headerItem.active:after {
+        display: none;
+    }
+
+    .headerItem.active {
+        background-color: #47b5aa;
+    }
+
+    div#externalLink {
+        display: block;
+        top: 17px;
+        right: 50px;
+    }
+
+
+}

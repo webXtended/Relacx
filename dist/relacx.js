@@ -1,7 +1,7 @@
 'use strict';
 
 /*!
- * Relacx v2.0
+ * Relacx v2.0.0
  *
  * Copyright 2017, Himanshu Tanwar
  * Released under the MIT license
@@ -119,6 +119,9 @@
         var prop;
         for (var i = 1; i < key.length - 1; i++) {
             prop = key[i];
+            if (data[prop] === undefined) {
+                data[prop] = {};
+            }
             data = data[prop];
         }
         var dataKey = key.pop();
@@ -198,11 +201,13 @@
     function render(Component, container, options) {
         var Controller = getBaseController();
         var properties = controllers[Component.name] || {};
+        options = options || {};
         options.props = options.props || {};
         options.state = options.state || {};
 
         var baseComponent = React.createElement(BaseComponent, { init: Controller,
             comp: Component,
+            compController: properties,
             props: options.props,
             state: options.state,
             callback: options.callback });
@@ -288,8 +293,10 @@
     function broadcastAction(actionName, data) {
         var listeners = actionListeners[actionName];
         for (var i = 0; i < listeners.length; i++) {
-            var controller = controllers[listeners[i].componentName];
-            listeners[i].action.call(controller.componentController, actionName, data);
+            setTimeout(function (listener) {
+                var controller = controllers[listener.componentName];
+                listener.action.call(controller.componentController, actionName, data);
+            }.bind(this, listeners[i]), 0);
         }
     }
 

@@ -1,16 +1,6 @@
-<!--https://cloudfour.com/thinks/the-hidden-power-of-handlebars-partials/#fn-4803-5-->
+{{#> layouts/base title="Relacx JS - Example" }}
 
-<!doctype html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>
-            Relacx JS - Example
-    </title>
-
-    <link type="text/css" rel="stylesheet" href="stylesheets/common.css"/>
-
+    {{#*inline "head-block"}}
         <link type="text/css" rel="stylesheet" href="stylesheets/todoStyle.css"/>
 
         <style>
@@ -57,47 +47,14 @@
             }
 
         </style>
+    {{/inline}}
 
-</head>
+    {{#*inline "header-block"}}
+        {{> includes/header active='tutorial' }}
+    {{/inline}}
 
-<body>
 
-        <header>
-            <div id="headerWrapper">
-                <div id="logo"><a href="/Relacx">Relacx</a></div>
-        
-                <div class="navIcon">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-        
-                <div id="headerContent">
-                    <div class="headerItem">
-                        <a href="docs">Docs</a>
-                    </div>
-                    <div class="headerItem">
-                        <a href="tutorials">Tutorials</a>
-                    </div>
-                    <div class="headerItem active">
-                        <a href="example">Example</a>
-                    </div>
-                    <div class="headerItem">
-                        <a href="feedback">Feedback</a>
-                    </div>
-                </div>
-        
-        
-                <div id="externalLink">
-                    <div class="externalItem">
-                        <a href="https://github.com/webXtended/Relacx" target="_blank">
-                            Github
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
+    {{#*inline "content-block"}}
         <div id="content">
             <section class="example">
                 <h2>Example</h2>
@@ -192,23 +149,7 @@
                 </div>
             </section>
         </div>
+    {{/inline}}
 
-        <footer>
-            <div class="copyright"><span class="icon">©</span> 2017 Himanshu Tanwar</div>
-        </footer>
-        <script>
-            window.addEventListener("load", function(){
-                var navIcon = document.querySelector(".navIcon");
-                var headerContent = document.querySelector("#headerContent");
-                navIcon.addEventListener("click", function() {
-                    if(headerContent.classList.contains("open")){
-                        headerContent.classList.remove("open");
-                    }else{
-                        headerContent.classList.add("open");
-                    }
-                });
-            });
-        </script>
 
-</body>
-</html>
+{{/layouts/base}}
