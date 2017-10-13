@@ -16,7 +16,7 @@
     else {
         context[name] = definition()
     }
-})('Relacx', window, function () {
+})('Relacx', global || window, function () {
     var controllers = {};
     var actionListeners = {};
 

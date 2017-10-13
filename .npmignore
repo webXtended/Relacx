@@ -1,0 +1,8 @@
+.idea
+docs
+examples
+node_modules
+src
+test
+gulpfile.js
+*.iml

@@ -1,8 +1,8 @@
 {
   "name": "relacx",
   "version": "2.0.0",
-  "description": "state management library for React applications.",
-  "main": "dist/relacx.min.js",
+  "description": "State management library for React applications.",
+  "main": "./dist/relacx.min.js",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -21,6 +21,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Himanshu Tanwar",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webXtended/Relacx.git"
+  },
+  "author": "Himanshu Tanwar <himanshucubed@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webXtended/Relacx/issues"
+  },
+  "homepage": "https://github.com/webXtended/Relacx#readme"
 }
