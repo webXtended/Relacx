@@ -5,7 +5,7 @@
     {{/inline}}
 
     {{#*inline "header-block"}}
-        {{> includes/header active='tutorial' }}
+        {{> includes/header}}
     {{/inline}}
 
 
@@ -18,6 +18,18 @@
                 So just <span class="subtitleLogo">Relacx</span>
             </h3>
         </div>
+
+
+        <div class="installContainer">
+            <div class="installWrapper">
+                <code class="npm">npm install --save relacx</code>
+                <br>
+                <div class="gap">OR</div>
+                <br>
+                <code class="github"><a target="_blank" href="./js/resources/relacx.min.js">Download JS</a></code>
+            </div>
+        </div>
+
         <div id="content">
             <section class="intro">
                 <p>
@@ -71,4 +83,4 @@
     {{/inline}}
 
 
-{{/layouts/base}}
+    {{/layouts/base}}

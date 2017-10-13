@@ -1,3 +1,4 @@
+<!--https://cloudfour.com/thinks/the-hidden-power-of-handlebars-partials/#fn-4803-5-->
 
 <!doctype html>
 <html>
@@ -72,16 +73,16 @@
                 </div>
         
                 <div id="headerContent">
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="docs">
                         <a href="docs">Docs</a>
                     </div>
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="tutorials">
                         <a href="tutorials">Tutorials</a>
                     </div>
-                    <div class="headerItem active">
+                    <div class="headerItem" data-item="example">
                         <a href="example">Example</a>
                     </div>
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="feedback">
                         <a href="feedback">Feedback</a>
                     </div>
                 </div>
@@ -202,6 +203,10 @@
 
         <script type="text/javascript" src="js/todoComp.js"></script>
         <script type="text/javascript" src="js/TodoApp.js"></script>
+
+        <script>
+            document.querySelector(".headerItem[data-item='example']").classList.add("active");
+        </script>
 
     <script>
         window.addEventListener("load", function(){

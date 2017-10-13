@@ -1,10 +1,11 @@
 
 div#banner {
     width: 100%;
-    height: 380px;
+    height: auto;
     background-color: #31847c;
     color: white;
     margin-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 
@@ -31,3 +32,23 @@ h3.subtitle {
 }
 
 
+.installContainer {
+    margin-bottom: 50px;
+    padding: 10px;
+    text-align: center;
+}
+
+code.npm, code.github {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+code.github a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.gap{
+    margin: 10px 0;
+}

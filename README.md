@@ -1,5 +1,5 @@
 # Relacx
-A micro library for separately managing react components and their state.
+Relacx is a state management library for React applications and is extremely simple to use.
 
 #### Installation
 
@@ -10,7 +10,7 @@ A micro library for separately managing react components and their state.
 > By Script Tag
 
 Since Relacx is a state manager for React; it requires React.js and React-Dom.js
-The current version of Relacx uses React version 15.5.4 
+The current version of Relacx uses React version 16.0.0 and also supports React version 15.x.x 
 
     <script type="text/javascript" src="react.js"></script>
     <script type="text/javascript" src="react-dom.js"></script>

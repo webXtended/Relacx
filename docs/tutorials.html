@@ -28,16 +28,16 @@
                 </div>
         
                 <div id="headerContent">
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="docs">
                         <a href="docs">Docs</a>
                     </div>
-                    <div class="headerItem active">
+                    <div class="headerItem" data-item="tutorials">
                         <a href="tutorials">Tutorials</a>
                     </div>
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="example">
                         <a href="example">Example</a>
                     </div>
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="feedback">
                         <a href="feedback">Feedback</a>
                     </div>
                 </div>
@@ -434,6 +434,11 @@ TimesNoteController.addActionListener("TIME_CLICK", function(action, data){
 
 
         </script>
+
+        <script>
+            document.querySelector(".headerItem[data-item='tutorials']")
+        </script>
+
     <script>
         window.addEventListener("load", function(){
             var navIcon = document.querySelector(".navIcon");

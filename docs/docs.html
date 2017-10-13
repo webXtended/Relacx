@@ -52,16 +52,16 @@
                 </div>
         
                 <div id="headerContent">
-                    <div class="headerItem active">
+                    <div class="headerItem" data-item="docs">
                         <a href="docs">Docs</a>
                     </div>
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="tutorials">
                         <a href="tutorials">Tutorials</a>
                     </div>
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="example">
                         <a href="example">Example</a>
                     </div>
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="feedback">
                         <a href="feedback">Feedback</a>
                     </div>
                 </div>
@@ -83,18 +83,21 @@
                 <h2>Installation</h2>
                 <div class="sectionContent">
                     <p>
-                        For using Relacx you need to include 4 resources,
+                        For using Relacx you need to the following resources,
                         <br><br>
                         <strong>React JS</strong> <br>
                         <strong>React-Dom JS</strong> <br>
-                        <strong>Babel Helpers</strong> <br>
                         <strong>Relacx JS</strong> <br>
                     </p>
 
                     <p>
                         Since Relacx is a state manager for React, it requires React.js and React-Dom.js to be available
                         <br>
-                        The current tested version of Relacx uses React version 15.5.4
+                        The current version of Relacx uses React version 16.0.0 and also supports React version 15.x.x
+                    </p>
+
+                    <p>
+                        The resources can be loaded vis NPM or by script tags.
                     </p>
 
                     <p>
@@ -103,6 +106,12 @@
                         follow your choice of installation for both React and React-Dom.
                     </p>
 
+                    <strong>by NPM</strong>
+                    <code>npm install --save react</code>
+                    <code>npm install --save react-dom</code>
+
+                    <br>
+                    <strong>by script tags</strong>
                     <pre>Non-Minified</pre>
                     <code>
                         &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/js/resources/react.js"&gt;&lt;/script&gt;
@@ -121,16 +130,13 @@
                     </code>
 
                     <br>
-                    <p>Then you need the babel helpers JS if you are transpiling your code using babel's ES6 converter</p>
-                    <code>
-                        &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/js/resources/helpers.js"&gt;&lt;/script&gt;
-                    </code>
-                    <code>
-                        &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/js/resources/helpers.min.js"&gt;&lt;/script&gt;
-                    </code>
+                    <p>Finally include Relacx JS</p>
+
+                    <strong>by NPM</strong>
+                    <code>npm install --save relacx</code>
 
                     <br>
-                    <p>Finally include Relacx JS</p>
+                    <strong>by script tag</strong>
                     <code>
                         &lt;script type="text/javascript" src="https://webxtended.github.io/Relacx/js/resources/relacx.js"&gt;&lt;/script&gt;
                     </code>
@@ -381,6 +387,9 @@
         <footer>
             <div class="copyright"><span class="icon">©</span> 2017 Himanshu Tanwar</div>
         </footer>
+        <script>
+            document.querySelector(".headerItem[data-item='docs']").classList.add("active");
+        </script>
     <script>
         window.addEventListener("load", function(){
             var navIcon = document.querySelector(".navIcon");

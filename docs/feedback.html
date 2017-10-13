@@ -39,16 +39,16 @@
                 </div>
         
                 <div id="headerContent">
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="docs">
                         <a href="docs">Docs</a>
                     </div>
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="tutorials">
                         <a href="tutorials">Tutorials</a>
                     </div>
-                    <div class="headerItem">
+                    <div class="headerItem" data-item="example">
                         <a href="example">Example</a>
                     </div>
-                    <div class="headerItem active">
+                    <div class="headerItem" data-item="feedback">
                         <a href="feedback">Feedback</a>
                     </div>
                 </div>
@@ -69,6 +69,9 @@
         <footer>
             <div class="copyright"><span class="icon">©</span> 2017 Himanshu Tanwar</div>
         </footer>
+        <script>
+            document.querySelector(".headerItem[data-item='feedback']")
+        </script>
     <script>
         window.addEventListener("load", function(){
             var navIcon = document.querySelector(".navIcon");
