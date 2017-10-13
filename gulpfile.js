@@ -11,6 +11,14 @@ gulp.task("default",["compress", "copyToDocs"]);
 gulp.task("babel", function(){
     return gulp.src("src/*.jsx")
     .pipe(babel({
+        presets: ['react', 'es2015']
+    }))
+    .pipe(gulp.dest("dist/"));
+});
+
+gulp.task("babel_withHelpers", function(){
+    return gulp.src("src/*.jsx")
+    .pipe(babel({
         presets: ['react', 'es2015'],
         plugins: ["external-helpers"]
     }))

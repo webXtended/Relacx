@@ -3,7 +3,10 @@
   "version": "2.0.1",
   "description": "State management library for React applications.",
   "main": "./dist/relacx.min.js",
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",

@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
 /*!
  * Relacx v2.0.0
  *

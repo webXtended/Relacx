@@ -1,4 +1,24 @@
-'use strict';
+"use strict";
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require("react-dom");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /*!
  * Relacx v2.0.0
@@ -21,12 +41,12 @@
     var actionListeners = {};
 
     var BaseComponent = function (_React$Component) {
-        babelHelpers.inherits(BaseComponent, _React$Component);
+        _inherits(BaseComponent, _React$Component);
 
         function BaseComponent(props) {
-            babelHelpers.classCallCheck(this, BaseComponent);
+            _classCallCheck(this, BaseComponent);
 
-            var _this = babelHelpers.possibleConstructorReturn(this, (BaseComponent.__proto__ || Object.getPrototypeOf(BaseComponent)).call(this, props));
+            var _this = _possibleConstructorReturn(this, (BaseComponent.__proto__ || Object.getPrototypeOf(BaseComponent)).call(this, props));
 
             var properties = {};
 
@@ -38,8 +58,8 @@
             return _this;
         }
 
-        babelHelpers.createClass(BaseComponent, [{
-            key: 'componentWillMount',
+        _createClass(BaseComponent, [{
+            key: "componentWillMount",
             value: function componentWillMount() {
                 if (this.props.parentController) {
                     this.props.init.prototype.uber = this.props.parentController;
@@ -59,23 +79,24 @@
                 }
             }
         }, {
-            key: 'componentWillReceiveProps',
+            key: "componentWillReceiveProps",
             value: function componentWillReceiveProps(props) {
                 this.setState(props.state);
             }
         }, {
-            key: 'render',
+            key: "render",
             value: function render() {
 
                 var Element = this.props.comp;
 
                 this.properties.controller = this.controller;
                 this.properties.state = this.state;
-                return React.createElement(Element, this.properties);
+                return _react2.default.createElement(Element, this.properties);
             }
         }]);
+
         return BaseComponent;
-    }(React.Component);
+    }(_react2.default.Component);
 
     ;
 
@@ -83,7 +104,7 @@
         var copy;
 
         // Handle the 3 simple types, and null or undefined
-        if (null == obj || "object" != (typeof obj === 'undefined' ? 'undefined' : babelHelpers.typeof(obj))) return obj;
+        if (null == obj || "object" != (typeof obj === "undefined" ? "undefined" : _typeof(obj))) return obj;
 
         // Handle Date
         if (obj instanceof Date) {
@@ -205,7 +226,7 @@
         options.props = options.props || {};
         options.state = options.state || {};
 
-        var baseComponent = React.createElement(BaseComponent, { init: Controller,
+        var baseComponent = _react2.default.createElement(BaseComponent, { init: Controller,
             comp: Component,
             compController: properties,
             props: options.props,
@@ -213,7 +234,7 @@
             callback: options.callback });
 
         if (container) {
-            ReactDOM.render(baseComponent, container, function () {
+            _reactDom2.default.render(baseComponent, container, function () {
                 if (options.afterRender && typeof options.afterRender === 'function') {
                     options.afterRender();
                 }
@@ -232,7 +253,7 @@
 
         var Controller = options.parent && options.childPath ? getChildController(options.parent, options.childPath) : getBaseController();
 
-        var baseComponent = React.createElement(BaseComponent, { init: Controller,
+        var baseComponent = _react2.default.createElement(BaseComponent, { init: Controller,
             comp: Comp,
             compController: compController,
             key: options.key,
