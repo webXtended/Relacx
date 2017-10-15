@@ -2,7 +2,7 @@
   "name": "relacx",
   "version": "2.0.2",
   "description": "State management library for React applications.",
-  "main": "./dist/relacx.min.js",
+  "main": "./dist/relacx_npm.min.js",
   "dependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
@@ -17,6 +17,7 @@
     "gulp-babel": "^7.0.0",
     "gulp-babel-external-helpers": "^2.0.2",
     "gulp-compile-handlebars": "^0.6.1",
+    "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
     "pump": "^1.0.2"
@@ -33,5 +34,6 @@
   "bugs": {
     "url": "https://github.com/webXtended/Relacx/issues"
   },
-  "homepage": "https://github.com/webXtended/Relacx#readme"
+  "homepage": "https://github.com/webXtended/Relacx#readme",
+  "keywords": ["relacx", "state"]
 }

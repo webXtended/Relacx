@@ -1,25 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
 /*!
- * Relacx v2.0.0
+ * Relacx
  *
  * Copyright 2017, Himanshu Tanwar
  * Released under the MIT license
  * https://github.com/webXtended/Relacx
- * Date: 2017-09-19
  */
-(function (name, context, definition) {
-    if (typeof module != 'undefined') {
-        module.exports = definition()
-    }
-    else if (typeof define == 'function') {
-        define(definition)
-    }
-    else {
-        context[name] = definition()
-    }
-})('Relacx', global || window, function () {
+
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+        typeof define === 'function' && define.amd ? define(factory) :
+            (global.Relacx = factory());
+}(this, (function () {
     var controllers = {};
     var actionListeners = {};
 
@@ -307,5 +298,5 @@ import ReactDOM from "react-dom";
         controller: getController,
         broadcastAction: broadcastAction
     }
-});
+})));
 

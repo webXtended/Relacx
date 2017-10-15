@@ -4,29 +4,20 @@ var babelHelpers = require('gulp-babel-external-helpers');
 var uglify = require('gulp-uglify');
 var pump = require('pump');
 var rename = require("gulp-rename");
-const handlebars = require('gulp-compile-handlebars');
+var handlebars = require('gulp-compile-handlebars');
+var concat = require('gulp-concat');
 
 gulp.task("default",["compress", "copyToDocs"]);
 
 gulp.task("babel", function(){
-    return gulp.src("src/*.jsx")
+    return gulp.src("src/relacx.jsx")
     .pipe(babel({
-        presets: ['react', 'es2015']
+        presets: ['react', ['es2015',{ "modules": false }]]
     }))
     .pipe(gulp.dest("dist/"));
 });
 
-gulp.task("babel_withHelpers", function(){
-    return gulp.src("src/*.jsx")
-    .pipe(babel({
-        presets: ['react', 'es2015'],
-        plugins: ["external-helpers"]
-    }))
-    .pipe(babelHelpers('helpers.js'))
-    .pipe(gulp.dest("dist/"));
-});
-
-gulp.task('compress', ["babel"], function (cb) {
+gulp.task('compress', ["babel", "concat"], function (cb) {
     pump([
             gulp.src(['!dist/*.min.js', 'dist/*.js']),
             uglify(),
@@ -39,6 +30,13 @@ gulp.task('compress', ["babel"], function (cb) {
             }
         }
     );
+});
+
+
+gulp.task('concat',["babel"], function() {
+    return gulp.src(['src/relacx_npm.js', 'dist/relacx.js'])
+        .pipe(concat('relacx_npm.js',{newLine:"\n"}))
+        .pipe(gulp.dest('dist'));
 });
 
 
@@ -68,4 +66,14 @@ gulp.task("babel_test", function(){
         plugins: ["external-helpers"]
     }))
     .pipe(gulp.dest("test/js"));
+});
+
+gulp.task("babel_withHelpers", function(){
+    return gulp.src("src/*.jsx")
+        .pipe(babel({
+            presets: ['react', 'es2015'],
+            plugins: ["external-helpers"]
+        }))
+        .pipe(babelHelpers('helpers.js'))
+        .pipe(gulp.dest("dist/"));
 });
