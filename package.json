@@ -1,6 +1,6 @@
 {
   "name": "relacx",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "State management library for React applications.",
   "main": "./dist/relacx_npm.min.js",
   "dependencies": {
@@ -35,5 +35,8 @@
     "url": "https://github.com/webXtended/Relacx/issues"
   },
   "homepage": "https://github.com/webXtended/Relacx#readme",
-  "keywords": ["relacx", "state"]
+  "keywords": [
+    "relacx",
+    "state"
+  ]
 }
