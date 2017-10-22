@@ -12,6 +12,7 @@
             (global.Relacx = factory());
 }(this, (function () {
     var controllers = {};
+    var controllerInstances = {};
     var actionListeners = {};
 
     class BaseComponent extends React.Component {
@@ -39,6 +40,8 @@
 
             if (controllers[this.props.comp.name]) {
                 controllers[this.props.comp.name].setComponentController(controller);
+                controllerInstances[this.props.comp.name] = controllerInstances[this.props.comp.name] || [];
+                controllerInstances[this.props.comp.name].push(controller);
             }
 
 
@@ -285,10 +288,12 @@
     function broadcastAction(actionName, data) {
         var listeners = actionListeners[actionName];
         for (let i = 0; i < listeners.length; i++) {
-            setTimeout((function(listener){
-                let controller = controllers[listener.componentName];
-                listener.action.call(controller.componentController, actionName, data);
-            }).bind(this, listeners[i]),0);
+            let instances = controllerInstances[listeners[i].componentName];
+            for (let j = 0; j < instances.length; j++) {
+                setTimeout((function (listener) {
+                    listener.action.call(instances[j], actionName, data);
+                }).bind(this, listeners[i]), 0);
+            }
         }
     }
 

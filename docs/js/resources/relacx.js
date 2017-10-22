@@ -20,6 +20,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     (typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.Relacx = factory();
 })(this, function () {
     var controllers = {};
+    var controllerInstances = {};
     var actionListeners = {};
 
     var BaseComponent = function (_React$Component) {
@@ -54,6 +55,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
                 if (controllers[this.props.comp.name]) {
                     controllers[this.props.comp.name].setComponentController(controller);
+                    controllerInstances[this.props.comp.name] = controllerInstances[this.props.comp.name] || [];
+                    controllerInstances[this.props.comp.name].push(controller);
                 }
 
                 if (this.props.callback) {
@@ -294,12 +297,26 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     };
 
     function broadcastAction(actionName, data) {
+        var _this2 = this;
+
         var listeners = actionListeners[actionName];
+
+        var _loop = function _loop(i) {
+            var instances = controllerInstances[listeners[i].componentName];
+
+            var _loop2 = function _loop2(j) {
+                setTimeout(function (listener) {
+                    listener.action.call(instances[j], actionName, data);
+                }.bind(_this2, listeners[i]), 0);
+            };
+
+            for (var j = 0; j < instances.length; j++) {
+                _loop2(j);
+            }
+        };
+
         for (var i = 0; i < listeners.length; i++) {
-            setTimeout(function (listener) {
-                var controller = controllers[listener.componentName];
-                listener.action.call(controller.componentController, actionName, data);
-            }.bind(this, listeners[i]), 0);
+            _loop(i);
         }
     }
 
