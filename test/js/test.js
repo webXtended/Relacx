@@ -1,87 +1,85 @@
 "use strict";
 
-var TestApp = function (_React$Component) {
-    babelHelpers.inherits(TestApp, _React$Component);
+var CounterParent = function (_React$Component) {
+    babelHelpers.inherits(CounterParent, _React$Component);
 
-    function TestApp() {
-        babelHelpers.classCallCheck(this, TestApp);
-        return babelHelpers.possibleConstructorReturn(this, (TestApp.__proto__ || Object.getPrototypeOf(TestApp)).apply(this, arguments));
+    function CounterParent() {
+        babelHelpers.classCallCheck(this, CounterParent);
+        return babelHelpers.possibleConstructorReturn(this, (CounterParent.__proto__ || Object.getPrototypeOf(CounterParent)).apply(this, arguments));
     }
 
-    babelHelpers.createClass(TestApp, [{
+    babelHelpers.createClass(CounterParent, [{
         key: "render",
         value: function render() {
-            var name = "",
-                childComp = "";
-            if (this.props.state.data && this.props.state.data.name) {
-                name = this.props.state.name;
-                childComp = Relacx.component(ChildComp, {
-                    parent: this,
-                    state: this.props.state.child ? this.props.state.child.data : {},
-                    childPath: "child.data"
+            var counters = this.props.state.counters.map(function (item, index) {
+                return Relacx.component(Counter, {
+                    state: { count: 0, diff: item },
+                    key: index,
+                    props: {
+                        key: index
+                    }
                 });
-            }
-
+            });
             return React.createElement(
                 "div",
                 null,
-                name,
-                React.createElement(
-                    "button",
-                    { onClick: this.props.controller.action("test") },
-                    "Click Me"
-                ),
-                childComp
+                counters
             );
         }
     }]);
-    return TestApp;
+    return CounterParent;
 }(React.Component);
 
-var ChildComp = function (_React$Component2) {
-    babelHelpers.inherits(ChildComp, _React$Component2);
+var Counter = function (_React$Component2) {
+    babelHelpers.inherits(Counter, _React$Component2);
 
-    function ChildComp() {
-        babelHelpers.classCallCheck(this, ChildComp);
-        return babelHelpers.possibleConstructorReturn(this, (ChildComp.__proto__ || Object.getPrototypeOf(ChildComp)).apply(this, arguments));
+    function Counter() {
+        babelHelpers.classCallCheck(this, Counter);
+        return babelHelpers.possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).apply(this, arguments));
     }
 
-    babelHelpers.createClass(ChildComp, [{
+    babelHelpers.createClass(Counter, [{
         key: "render",
         value: function render() {
             return React.createElement(
                 "div",
-                null,
-                this.props.state.innerData ? this.props.state.innerData.name : "no data",
-                React.createElement(
-                    "button",
-                    { onClick: this.props.controller.action("innerClick") },
-                    "CLICK"
-                )
+                { onClick: this.props.controller.action("showCount") },
+                this.props.state.count
             );
         }
     }]);
-    return ChildComp;
+    return Counter;
 }(React.Component);
 
-var TestController = Relacx.controller(TestApp);
-TestController.addAction("test", function () {
+var CounterController = Relacx.controller(Counter);
+CounterController.addActionListener("INCREMENT", function () {
+    var state = this.getState();
     this.setState({
-        data: {
-            name: new Date().toString()
-        }
+        count: state.count + state.diff
     });
 });
-
-var ChildContoller = Relacx.controller(ChildComp);
-ChildContoller.addAction("innerClick", function () {
-    this.setState({
-        innerData: {
-            name: new Date().getSeconds()
-        }
-    });
+CounterController.addAction("showCount", function () {
+    console.log(this.getState().count);
 });
 
-window.addEventListener("load", function () {
-    Relacx.render(TestApp, document.getElementById("app"));
+Relacx.render(CounterParent, document.getElementById("app"), {
+    state: { counters: [1, 3, 5, 7] },
+    afterRender: function afterRender() {
+        setInterval(function () {
+            Relacx.broadcastAction("INCREMENT");
+        }, 3000);
+    }
 });
+
+// window.addEventListener("load", function(){
+//    // Relacx.render(TestApp, document.getElementById("app"));
+//
+//     Relacx.render(WorldClock, document.getElementById("app"), {
+//         state: {clocks:[
+//             new Date(),
+//             new Date()
+//         ]}
+//     });
+//
+// });
+//

@@ -1,58 +1,62 @@
-class TestApp extends React.Component{
+class CounterParent extends React.Component{
     render(){
-        var name = "",
-        childComp = "";
-        if(this.props.state.data && this.props.state.data.name){
-           name = this.props.state.name;
-           childComp = Relacx.component(ChildComp, {
-              parent: this,
-              state:(this.props.state.child?this.props.state.child.data : {}),
-              childPath: "child.data"
-           });
-        }
-
-
+        var counters = this.props.state.counters.map(function(item, index){
+            return Relacx.component(Counter, {
+                state:{count:0,diff:item},
+                key: index,
+                props: {
+                    key: index
+                }
+            });
+        });
         return(
-            <div>
-                {name}
-                <button onClick={this.props.controller.action("test")}>Click Me</button>
-                {childComp}
-            </div>
+            <div>{counters}</div>
         )
     }
 }
 
-
-class ChildComp extends React.Component{
+class Counter extends React.Component{
     render(){
         return(
-            <div>{this.props.state.innerData?this.props.state.innerData.name:"no data"}
-             <button onClick={this.props.controller.action("innerClick")}>CLICK</button>
-            </div>
-        )
+            <div onClick={this.props.controller.action("showCount")}>
+                {this.props.state.count}
+            </div>)
     }
 }
 
 
-var TestController = Relacx.controller(TestApp);
-TestController.addAction("test", function(){
-   this.setState({
-       data:{
-           name: new Date().toString()
-       }
-   })
+var CounterController = Relacx.controller(Counter);
+CounterController.addActionListener("INCREMENT", function(){
+    var state = this.getState();
+    this.setState({
+        count: state.count + state.diff
+    })
+});
+CounterController.addAction("showCount", function(){
+    console.log(this.getState().count);
+});
+
+Relacx.render(CounterParent, document.getElementById("app"), {
+    state: {counters:[1,3,5,7]},
+    afterRender: function(){
+        setInterval(function(){
+            Relacx.broadcastAction("INCREMENT")
+        },3000);
+    }
 });
 
 
-var ChildContoller = Relacx.controller(ChildComp);
-ChildContoller.addAction("innerClick", function(){
-   this.setState({
-       innerData:{
-           name: new Date().getSeconds()
-       }
-   })
-});
+// window.addEventListener("load", function(){
+//    // Relacx.render(TestApp, document.getElementById("app"));
+//
+//     Relacx.render(WorldClock, document.getElementById("app"), {
+//         state: {clocks:[
+//             new Date(),
+//             new Date()
+//         ]}
+//     });
+//
+// });
+//
 
-window.addEventListener("load", function(){
-   Relacx.render(TestApp, document.getElementById("app"));
-});
+
