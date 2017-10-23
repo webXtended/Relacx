@@ -195,3 +195,15 @@ This is an alternative to using BroadcastAction in the Controller. It can be use
 Whenever an action takes place and you want to inform other actions of an event, then use the
 broadcastAction method to do so. Action listeners listening for the ACTION_NAME event will get triggered
 and the triggered function will receive 2 parameters, the ACTION_NAME and DATA from the broadcaster.
+
+####
+#### Support for Server Side Rendering and Hydrate
+
+You can easily use React's server side rendering method 'renderToString' as shown below, 
+just dont forget to include ReactDOM/server 
+
+     ReactDOMServer.renderToString(Relacx.component(COMPONENT));
+
+The hydrate method is also supported in the same way.
+
+    ReactDOM.hydrate(Relacx.component(COMPONENT, OPTIONS), CONTAINER);
